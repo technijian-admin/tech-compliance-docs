@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pandoc \"clients/affg/BCP_Compliance_Review.docx\" -o /tmp/bcp_review.md)",
+      "Bash(node generate-docx.js \"Information_Security_Program_WISP.md\" \"Information_Security_Program_WISP.docx\" \"Information Security Program \\(WISP\\)\" \"1.0\" \"March 6, 2026\" \"C:/Users/rjain/AppData/Local/Temp/tech-branding/assets/Technijian Logo 2.png\" \"C:/Users/rjain/AppData/Local/Temp/tech-branding/assets/Technijian Logo - 200x50.jpg\")",
+      "Bash(npm install docx)",
+      "Bash(node generate-docx.js \"Incident_Response_Plan_IRP.md\" \"Incident_Response_Plan_IRP.docx\" \"Incident Response Plan \\(IRP\\)\" \"1.0\" \"March 6, 2026\" \"C:/Users/rjain/AppData/Local/Temp/tech-branding/assets/Technijian Logo 2.png\" \"C:/Users/rjain/AppData/Local/Temp/tech-branding/assets/Technijian Logo - 200x50.jpg\")",
+      "Bash(node generate-docx.js \"Business_Continuity_Disaster_Recovery_Plan_BCP_DR.md\" \"Business_Continuity_Disaster_Recovery_Plan_BCP_DR.docx\" \"Business Continuity & Disaster Recovery Plan \\(BCP/DR\\)\" \"1.0\" \"March 6, 2026\" \"C:/Users/rjain/AppData/Local/Temp/tech-branding/assets/Technijian Logo 2.png\" \"C:/Users/rjain/AppData/Local/Temp/tech-branding/assets/Technijian Logo - 200x50.jpg\")"
+    ]
+  }
+}

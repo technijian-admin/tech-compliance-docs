@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pandoc \"clients/affg/BCP_Compliance_Review-Original.docx\" -o /tmp/bcp_original.md)",
+      "Read(//c/tmp/**)",
+      "Read(//tmp/**)",
+      "Bash(cygpath -w /tmp/bcp_review.md)",
+      "Read(//c/Users/rjain/AppData/Local/Temp/**)",
+      "Bash(pandoc \"clients/affg/6.1.2 Business Continuity Plan.doc\" -o /tmp/bcp_original_plan.md)",
+      "Bash(git clone https://github.com/rjain557/tech-branding.git /tmp/tech-branding)",
+      "Bash(python \"C:/Users/rjain/.claude/plugins/cache/anthropic-agent-skills/document-skills/1ed29a03dc85/skills/skill-creator/scripts/init_skill.py\" technijian-docx --path \"c:/VSCode/tech-compliance-docs/tech-compliance-docs\")",
+      "Bash(PYTHONIOENCODING=utf-8 python \"C:/Users/rjain/.claude/plugins/cache/anthropic-agent-skills/document-skills/1ed29a03dc85/skills/skill-creator/scripts/init_skill.py\" technijian-docx --path \"c:/VSCode/tech-compliance-docs/tech-compliance-docs\")",
+      "Read(//c/Users/rjain/.claude/plugins/cache/anthropic-agent-skills/document-skills/1ed29a03dc85/skills/docx/**)",
+      "Bash(npm list -g docx)",
+      "Bash(npm install -g docx)",
+      "Bash(node scripts/generate_branded_docx.js test-content.json test-output.docx)",
+      "Bash(python -c \":*)",
+      "Bash(PYTHONIOENCODING=utf-8 python \"C:/Users/rjain/.claude/plugins/cache/anthropic-agent-skills/document-skills/1ed29a03dc85/skills/skill-creator/scripts/package_skill.py\" \"c:/VSCode/tech-compliance-docs/tech-compliance-docs/technijian-docx\" \"c:/VSCode/tech-compliance-docs/tech-compliance-docs\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\rjain\\AppData\\Local\\Temp\\tech-branding\\assets"
+    ]
+  }
+}
