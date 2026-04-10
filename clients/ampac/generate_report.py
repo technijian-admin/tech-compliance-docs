@@ -37,24 +37,20 @@ pdfmetrics.registerFont(TTFont("OpenSans-SemiBold",  os.path.join(FONT_DIR, "Ope
 pdfmetrics.registerFont(TTFont("OpenSans-Bold",      os.path.join(FONT_DIR, "OpenSans-Bold.ttf")))
 pdfmetrics.registerFont(TTFont("OpenSans-ExtraBold", os.path.join(FONT_DIR, "OpenSans-ExtraBold.ttf")))
 
-# ─── LOGO ─────────────────────────────────────────────────────
-LOGO_URL = "https://technijian.com/wp-content/uploads/2023/08/Logo.jpg"
-LOGO_PATH = os.path.join(BASE, "technijian_logo.jpg")
-if not os.path.exists(LOGO_PATH):
-    req = urllib.request.Request(LOGO_URL, headers={"User-Agent": "Mozilla/5.0"})
-    data = urllib.request.urlopen(req, timeout=15).read()
-    with open(LOGO_PATH, "wb") as f:
-        f.write(data)
+# ─── LOGOS ─────────────────────────────────────────────────────
+LOGO_WHITE = r"c:\vscode\tech-branding\tech-branding\assets\Technijian Logo - white text.png"
+LOGO_COLOR = r"c:\vscode\tech-branding\tech-branding\assets\logos\png\technijian-logo-full-color-1200x251.png"
 
 # ─── HELPERS ──────────────────────────────────────────────────
 
-def draw_logo(c, x, y, h=28):
-    """Draw logo at position, scaled to height h."""
+def draw_logo(c, x, y, h=28, dark_bg=False):
+    """Draw logo at position, scaled to height h. Use white version on dark backgrounds."""
+    logo_path = LOGO_WHITE if dark_bg else LOGO_COLOR
     try:
-        img = Image.open(LOGO_PATH)
+        img = Image.open(logo_path)
         aspect = img.width / img.height
         w = h * aspect
-        c.drawImage(LOGO_PATH, x, y, width=w, height=h, preserveAspectRatio=True, mask='auto')
+        c.drawImage(logo_path, x, y, width=w, height=h, preserveAspectRatio=True, mask='auto')
         return w
     except:
         return 0
@@ -152,76 +148,76 @@ def page_cover(c):
         c.setLineWidth(0.25)
         c.line(36, y, W - 36, y)
 
-    # Logo — positioned with quiet authority
-    draw_logo(c, 36, H - 132, h=30)
+    # Logo — white text version on dark background, positioned with authority
+    draw_logo(c, 36, H - 135, h=36, dark_bg=True)
 
     # Orange accent bar — warm signal, deliberate length
     c.setFillColor(ORANGE)
-    c.rect(36, H - 168, 72, 2.5, fill=1, stroke=0)
+    c.rect(36, H - 172, 72, 2.5, fill=1, stroke=0)
 
     # Title block — monumental typography with refined spacing
-    c.setFont("OpenSans-ExtraBold", 40)
+    c.setFont("OpenSans-ExtraBold", 44)
     c.setFillColor(white)
-    c.drawString(36, H - 236, "Compliance")
-    c.drawString(36, H - 284, "Framework")
-    c.setFont("OpenSans-Light", 40)
+    c.drawString(36, H - 240, "Compliance")
+    c.drawString(36, H - 292, "Framework")
+    c.setFont("OpenSans-Light", 44)
     c.setFillColor(Color(1, 1, 1, 0.88))
-    c.drawString(36, H - 332, "& IT Controls")
+    c.drawString(36, H - 344, "& IT Controls")
 
     # Teal rule under title — precise cartographic underline
     c.setFillColor(TEAL)
-    c.rect(36, H - 348, 180, 1.5, fill=1, stroke=0)
+    c.rect(36, H - 360, 180, 1.5, fill=1, stroke=0)
 
     # Client name — secondary monumental
-    c.setFont("OpenSans-Bold", 17)
+    c.setFont("OpenSans-Bold", 18)
     c.setFillColor(ORANGE)
-    c.drawString(36, H - 390, "AMPAC BUSINESS CAPITAL")
+    c.drawString(36, H - 400, "AMPAC BUSINESS CAPITAL")
 
-    c.setFont("OpenSans", 10.5)
-    c.setFillColor(Color(1, 1, 1, 0.65))
-    c.drawString(36, H - 412, "SBA 504 Lender  |  Community Development Financial Institution")
-    c.setFont("OpenSans-Light", 10.5)
+    c.setFont("OpenSans", 12)
+    c.setFillColor(Color(1, 1, 1, 0.70))
+    c.drawString(36, H - 424, "SBA 504 Lender  |  CDFI")
+    c.setFont("OpenSans-Light", 11)
     c.setFillColor(Color(1, 1, 1, 0.50))
-    c.drawString(36, H - 430, "California  \u00b7  Arizona  \u00b7  Nevada")
+    c.drawString(36, H - 444, "California  \u00b7  Arizona  \u00b7  Nevada")
 
     # Right-side cartographic legend — framework + controls metrics
-    bx = W - 195
-    by = H - 240
+    bx = W - 200
+    by = H - 220
 
-    # Legend box — subtle border
+    # Legend box — subtle border, well-spaced
     c.setStrokeColor(Color(1, 1, 1, 0.06))
     c.setLineWidth(0.5)
     c.setFillColor(Color(1, 1, 1, 0.04))
-    c.roundRect(bx - 16, by - 110, 186, 140, 3, fill=1, stroke=1)
+    c.roundRect(bx - 16, by - 140, 192, 170, 3, fill=1, stroke=1)
 
-    # Legend title
-    c.setFont("OpenSans-SemiBold", 6)
-    c.setFillColor(Color(1, 1, 1, 0.30))
-    c.drawString(bx - 6, by + 16, "ASSESSMENT SUMMARY")
+    # Legend title — well above the numbers
+    c.setFont("OpenSans-SemiBold", 7)
+    c.setFillColor(Color(1, 1, 1, 0.35))
+    c.drawString(bx - 4, by + 14, "ASSESSMENT SUMMARY")
     c.setStrokeColor(Color(1, 1, 1, 0.08))
-    c.line(bx - 6, by + 12, bx + 155, by + 12)
+    c.line(bx - 4, by + 6, bx + 160, by + 6)
 
-    # Metric 1: Frameworks
-    c.setFont("OpenSans-ExtraBold", 46)
+    # Metric 1: Frameworks — number left, labels right, no overlap
+    c.setFont("OpenSans-ExtraBold", 42)
     c.setFillColor(BLUE)
-    c.drawString(bx, by - 4, "8")
-    c.setFont("OpenSans-Light", 9.5)
-    c.setFillColor(Color(1, 1, 1, 0.55))
-    c.drawString(bx + 38, by + 6, "REGULATORY")
-    c.drawString(bx + 38, by - 6, "FRAMEWORKS")
+    c.drawString(bx, by - 28, "8")
+    c.setFont("OpenSans", 11)
+    c.setFillColor(Color(1, 1, 1, 0.60))
+    c.drawString(bx + 36, by - 16, "Regulatory")
+    c.drawString(bx + 36, by - 30, "Frameworks")
 
     # Divider
     c.setStrokeColor(Color(1, 1, 1, 0.06))
-    c.line(bx - 6, by - 26, bx + 155, by - 26)
+    c.line(bx - 4, by - 50, bx + 160, by - 50)
 
-    # Metric 2: Controls
-    c.setFont("OpenSans-ExtraBold", 46)
+    # Metric 2: Controls — clear spacing below divider
+    c.setFont("OpenSans-ExtraBold", 42)
     c.setFillColor(TEAL)
-    c.drawString(bx - 4, by - 68, "52")
-    c.setFont("OpenSans-Light", 9.5)
-    c.setFillColor(Color(1, 1, 1, 0.55))
-    c.drawString(bx + 48, by - 56, "IT CONTROLS")
-    c.drawString(bx + 48, by - 68, "IDENTIFIED")
+    c.drawString(bx - 2, by - 88, "52")
+    c.setFont("OpenSans", 11)
+    c.setFillColor(Color(1, 1, 1, 0.60))
+    c.drawString(bx + 48, by - 76, "IT Controls")
+    c.drawString(bx + 48, by - 90, "Identified")
 
     # Bottom band — layered for depth
     c.setFillColor(Color(0, 0, 0, 0.35))
@@ -277,35 +273,23 @@ def page_exec_overview(c):
     c.setFillColor(OFF_WHITE)
     c.rect(0, 0, W, H, fill=1, stroke=0)
 
-    # Header band
-    c.setFillColor(DARK)
-    c.rect(0, H - 60, W, 60, fill=1, stroke=0)
-    c.setFillColor(ORANGE)
-    c.rect(0, H - 63, W, 3, fill=1, stroke=0)
-
-    draw_logo(c, 36, H - 48, h=24)
-    c.setFont("OpenSans-Bold", 14)
-    c.setFillColor(white)
-    c.drawString(170, H - 43, "COMPLIANCE FRAMEWORK OVERVIEW")
-
-    c.setFont("OpenSans-Light", 7)
-    c.setFillColor(Color(1, 1, 1, 0.5))
-    c.drawString(W - 140, H - 43, "AMPAC-CFR-001  |  P.02")
+    # Use standard header
+    draw_header(c, 2, "COMPLIANCE FRAMEWORK OVERVIEW")
 
     # Section title
-    y = H - 95
-    c.setFont("OpenSans-ExtraBold", 11)
+    y = H - 80
+    c.setFont("OpenSans-ExtraBold", 13)
     c.setFillColor(BLUE)
     c.drawString(36, y, "REGULATORY LANDSCAPE")
     draw_ruled_line(c, 36, W - 36, y - 8, LIGHT_GREY, 0.5)
 
     # Intro text
-    y -= 26
+    y -= 28
     y = text_block(c,
         "As an SBA 504 lender and CDFI, AMPAC Business Capital operates under eight intersecting regulatory "
         "frameworks. Each framework mandates specific IT controls that Technijian will implement, monitor, and "
         "maintain. The map below identifies each framework, its governing authority, and the number of IT controls required.",
-        36, y, "OpenSans", 8.5, GREY, max_w=W - 72)
+        36, y, "OpenSans", 9.5, GREY, max_w=W - 72)
     y -= 12
 
     # Framework cards — 2 columns, 4 rows
@@ -342,32 +326,33 @@ def page_exec_overview(c):
         c.rect(cx, cy - card_h, 4, card_h, fill=1, stroke=0)
 
         # Number
-        c.setFont("OpenSans-ExtraBold", 22)
+        c.setFont("OpenSans-ExtraBold", 24)
         c.setFillColor(color)
-        c.drawString(cx + 14, cy - 28, num)
+        c.drawString(cx + 14, cy - 30, num)
 
         # Name
-        c.setFont("OpenSans-Bold", 9)
+        c.setFont("OpenSans-Bold", 10)
         c.setFillColor(DARK)
         c.drawString(cx + 50, cy - 18, name)
 
         # Regulation
-        c.setFont("OpenSans-Light", 7)
+        c.setFont("OpenSans-Light", 8)
         c.setFillColor(GREY)
-        c.drawString(cx + 50, cy - 30, reg)
+        c.drawString(cx + 50, cy - 31, reg)
 
         # Authority
-        c.drawString(cx + 50, cy - 42, f"Authority: {auth}")
+        c.setFont("OpenSans-Light", 8)
+        c.drawString(cx + 50, cy - 43, f"Authority: {auth}")
 
         # Controls badge
-        badge_w = pdfmetrics.stringWidth(ctrls, "OpenSans-SemiBold", 7) + 14
+        badge_w = pdfmetrics.stringWidth(ctrls, "OpenSans-SemiBold", 8) + 16
         bx = cx + card_w - badge_w - 12
-        by_badge = cy - 62
+        by_badge = cy - 64
         c.setFillColor(Color(color.red, color.green, color.blue, 0.12))
-        c.roundRect(bx, by_badge, badge_w, 16, 8, fill=1, stroke=0)
-        c.setFont("OpenSans-SemiBold", 7)
+        c.roundRect(bx, by_badge, badge_w, 18, 9, fill=1, stroke=0)
+        c.setFont("OpenSans-SemiBold", 8)
         c.setFillColor(color)
-        c.drawString(bx + 7, by_badge + 4, ctrls)
+        c.drawString(bx + 8, by_badge + 5, ctrls)
 
     # Bottom summary bar
     bar_y = start_y - 4 * (card_h + gap_y) - 20
@@ -542,22 +527,22 @@ FRAMEWORK_DETAILS = [
 def draw_header(c, page_num, title=""):
     """Standard page header — refined with registration marks."""
     c.setFillColor(DARK)
-    c.rect(0, H - 48, W, 48, fill=1, stroke=0)
+    c.rect(0, H - 52, W, 52, fill=1, stroke=0)
     c.setFillColor(ORANGE)
-    c.rect(0, H - 50.5, W, 2.5, fill=1, stroke=0)
+    c.rect(0, H - 54.5, W, 2.5, fill=1, stroke=0)
     # Teal hairline above orange
     c.setFillColor(TEAL)
-    c.rect(0, H - 48, W, 0.4, fill=1, stroke=0)
+    c.rect(0, H - 52, W, 0.4, fill=1, stroke=0)
 
-    draw_logo(c, 36, H - 39, h=20)
+    draw_logo(c, 36, H - 42, h=22, dark_bg=True)
     if title:
-        c.setFont("OpenSans-Bold", 10)
+        c.setFont("OpenSans-Bold", 11)
         c.setFillColor(white)
-        c.drawString(155, H - 34, title)
+        c.drawString(155, H - 37, title)
 
-    c.setFont("OpenSans-Light", 6.5)
-    c.setFillColor(Color(1, 1, 1, 0.40))
-    c.drawRightString(W - 36, H - 34, f"AMPAC-CFR-001  |  P.{page_num:02d}")
+    c.setFont("OpenSans-Light", 7)
+    c.setFillColor(Color(1, 1, 1, 0.45))
+    c.drawRightString(W - 36, H - 37, f"AMPAC-CFR-001  |  P.{page_num:02d}")
 
 
 def draw_footer(c, page_num):
@@ -586,46 +571,53 @@ def draw_framework_section(c, fw, y_start, available_h):
     # Accent bar
     c.setFillColor(fw["color"])
     c.rect(x_left, y - 2, content_w, 2, fill=1, stroke=0)
-    y -= 20
+    y -= 22
 
     # Number circle
     c.setFillColor(fw["color"])
-    c.circle(x_left + 14, y - 2, 14, fill=1, stroke=0)
-    c.setFont("OpenSans-ExtraBold", 12)
+    c.circle(x_left + 15, y - 2, 15, fill=1, stroke=0)
+    c.setFont("OpenSans-ExtraBold", 13)
     c.setFillColor(white)
-    nw = pdfmetrics.stringWidth(fw["num"], "OpenSans-ExtraBold", 12)
-    c.drawString(x_left + 14 - nw / 2, y - 7, fw["num"])
+    nw = pdfmetrics.stringWidth(fw["num"], "OpenSans-ExtraBold", 13)
+    c.drawString(x_left + 15 - nw / 2, y - 7, fw["num"])
 
     # Name
-    c.setFont("OpenSans-ExtraBold", 13)
+    c.setFont("OpenSans-ExtraBold", 14)
     c.setFillColor(DARK)
-    c.drawString(x_left + 36, y - 5, fw["name"])
+    c.drawString(x_left + 40, y - 5, fw["name"])
 
     # Subtitle
-    c.setFont("OpenSans-Light", 7)
+    c.setFont("OpenSans-Light", 8.5)
     c.setFillColor(GREY)
-    c.drawString(x_left + 36, y - 18, fw["subtitle"])
+    c.drawString(x_left + 40, y - 19, fw["subtitle"])
 
-    y -= 32
+    y -= 34
 
     # Description
-    y = text_block(c, fw["desc"], x_left + 8, y, "OpenSans", 7.8, GREY, max_w=content_w - 16, leading=11)
-    y -= 8
+    y = text_block(c, fw["desc"], x_left + 8, y, "OpenSans", 9, GREY, max_w=content_w - 16, leading=12.5)
+    y -= 10
 
     # Controls table header
     c.setFillColor(Color(fw["color"].red, fw["color"].green, fw["color"].blue, 0.08))
-    c.rect(x_left, y - 14, content_w, 14, fill=1, stroke=0)
-    c.setFont("OpenSans-SemiBold", 6.5)
+    c.rect(x_left, y - 16, content_w, 16, fill=1, stroke=0)
+    c.setFont("OpenSans-SemiBold", 8)
     c.setFillColor(fw["color"])
-    c.drawString(x_left + 8, y - 10, "IT CONTROL")
-    c.drawString(x_left + 180, y - 10, "IMPLEMENTATION REQUIREMENT")
-    y -= 18
+    c.drawString(x_left + 8, y - 12, "IT CONTROL")
+    c.drawString(x_left + 190, y - 12, "IMPLEMENTATION REQUIREMENT")
+    y -= 20
 
     # Controls rows
+    CTRL_NAME_W = 175
+    DESC_X = x_left + 190
+    DESC_W = content_w - 198
+    FONT_NAME_SZ = 8
+    FONT_DESC_SZ = 7.5
+
     for i, (ctrl_name, ctrl_desc) in enumerate(fw["controls"]):
         # Estimate row height
-        desc_lines = max(1, int(pdfmetrics.stringWidth(ctrl_desc, "OpenSans-Light", 6.5) / (content_w - 196)) + 1)
-        row_h = max(18, desc_lines * 9 + 6)
+        desc_lines = max(1, int(pdfmetrics.stringWidth(ctrl_desc, "OpenSans-Light", FONT_DESC_SZ) / DESC_W) + 1)
+        name_lines_est = max(1, int(pdfmetrics.stringWidth(ctrl_name, "OpenSans-SemiBold", FONT_NAME_SZ) / CTRL_NAME_W) + 1)
+        row_h = max(20, max(desc_lines, name_lines_est) * 11 + 8)
 
         if y - row_h < 40:
             break  # Don't overflow
@@ -635,17 +627,16 @@ def draw_framework_section(c, fw, y_start, available_h):
             c.setFillColor(Color(0.96, 0.97, 0.98, 1))
             c.rect(x_left, y - row_h, content_w, row_h, fill=1, stroke=0)
 
-        # Control name
-        c.setFont("OpenSans-SemiBold", 6.8)
+        # Control name — wrapped
+        c.setFont("OpenSans-SemiBold", FONT_NAME_SZ)
         c.setFillColor(DARK)
-        # Wrap control name if needed
-        name_y = y - 10
+        name_y = y - 12
         name_lines = []
         words = ctrl_name.split()
         current = ""
         for w in words:
             test = current + (" " if current else "") + w
-            if pdfmetrics.stringWidth(test, "OpenSans-SemiBold", 6.8) <= 160:
+            if pdfmetrics.stringWidth(test, "OpenSans-SemiBold", FONT_NAME_SZ) <= CTRL_NAME_W:
                 current = test
             else:
                 name_lines.append(current)
@@ -654,24 +645,24 @@ def draw_framework_section(c, fw, y_start, available_h):
             name_lines.append(current)
         for nl in name_lines:
             c.drawString(x_left + 8, name_y, nl)
-            name_y -= 9
+            name_y -= 11
 
         # Control description — wrapped
-        c.setFont("OpenSans-Light", 6.5)
+        c.setFont("OpenSans-Light", FONT_DESC_SZ)
         c.setFillColor(GREY)
-        desc_y = y - 10
+        desc_y = y - 12
         dwords = ctrl_desc.split()
         dcurrent = ""
         for w in dwords:
             test = dcurrent + (" " if dcurrent else "") + w
-            if pdfmetrics.stringWidth(test, "OpenSans-Light", 6.5) <= content_w - 196:
+            if pdfmetrics.stringWidth(test, "OpenSans-Light", FONT_DESC_SZ) <= DESC_W:
                 dcurrent = test
             else:
-                c.drawString(x_left + 180, desc_y, dcurrent)
-                desc_y -= 9
+                c.drawString(DESC_X, desc_y, dcurrent)
+                desc_y -= 11
                 dcurrent = w
         if dcurrent:
-            c.drawString(x_left + 180, desc_y, dcurrent)
+            c.drawString(DESC_X, desc_y, dcurrent)
 
         y -= row_h
 
@@ -683,14 +674,14 @@ def page_framework_detail(c, fw_pair, page_num):
     c.setFillColor(OFF_WHITE)
     c.rect(0, 0, W, H, fill=1, stroke=0)
 
-    # Subtle dot grid in margins
-    draw_dot_grid(c, 0, 30, 30, H - 80, spacing=15, radius=0.3,
+    # Subtle dot grid in left margin only
+    draw_dot_grid(c, 0, 30, 28, H - 84, spacing=15, radius=0.3,
                   color=Color(0.82, 0.84, 0.88, 0.3))
 
     draw_header(c, page_num, "IT CONTROLS BY FRAMEWORK")
     draw_footer(c, page_num)
 
-    y = H - 72
+    y = H - 76
 
     for fw in fw_pair:
         y = draw_framework_section(c, fw, y, 0)
@@ -709,10 +700,10 @@ def page_priority_matrix(c):
     draw_header(c, 7, "COMPLIANCE PRIORITY MATRIX")
     draw_footer(c, 7)
 
-    y = H - 80
+    y = H - 82
 
     # Section title
-    c.setFont("OpenSans-ExtraBold", 11)
+    c.setFont("OpenSans-ExtraBold", 13)
     c.setFillColor(BLUE)
     c.drawString(36, y, "IMPLEMENTATION PRIORITY & TIMELINE")
     draw_ruled_line(c, 36, W - 36, y - 8, LIGHT_GREY, 0.5)
@@ -721,69 +712,69 @@ def page_priority_matrix(c):
     text_block(c,
         "The matrix below prioritizes framework implementation based on regulatory criticality, enforcement risk, "
         "and implementation complexity. All CRITICAL frameworks must be addressed within 90 days.",
-        36, y, "OpenSans", 8.5, GREY, max_w=W - 72)
-    y -= 36
+        36, y, "OpenSans", 9.5, GREY, max_w=W - 72)
+    y -= 38
 
     # Table header
-    cols = [36, 190, 295, 385, 470, W - 36]
+    cols = [36, 200, 300, 385, 470, W - 36]
     headers = ["FRAMEWORK", "CRITICALITY", "EFFORT", "TIMELINE", "OWNER"]
 
     c.setFillColor(DARK)
-    c.rect(cols[0], y - 18, cols[-1] - cols[0], 18, fill=1, stroke=0)
-    c.setFont("OpenSans-SemiBold", 7)
+    c.rect(cols[0], y - 20, cols[-1] - cols[0], 20, fill=1, stroke=0)
+    c.setFont("OpenSans-SemiBold", 8)
     c.setFillColor(white)
     for i, h in enumerate(headers):
-        c.drawString(cols[i] + 8, y - 13, h)
-    y -= 20
+        c.drawString(cols[i] + 8, y - 14, h)
+    y -= 22
 
     rows = [
-        ("SBA Loan Programs (SOP 50 10)", "CRITICAL", ORANGE, "High", "90 days", "Compliance, Underwriting"),
-        ("CDFI Compliance (Treasury)", "CRITICAL", ORANGE, "High", "90 days", "Compliance, Operations"),
-        ("Fair Lending / ECOA", "CRITICAL", ORANGE, "High", "60 days", "Legal, Underwriting"),
-        ("AML / BSA / KYC", "CRITICAL", ORANGE, "High", "90 days", "Compliance, BSA Officer"),
-        ("Information Security (GLBA)", "HIGH", BLUE, "High", "120 days", "IT, CISO"),
-        ("FCRA Compliance", "HIGH", BLUE, "Medium", "45 days", "Underwriting, Legal"),
-        ("Data Privacy (CCPA/CPRA)", "HIGH", BLUE, "Medium", "90 days", "Legal, Privacy"),
-        ("Consumer Protection (TILA)", "MODERATE", TEAL, "Medium", "60 days", "Compliance, Legal"),
+        ("SBA Loan Programs (SOP 50 10)", "CRITICAL", ORANGE, "High", "90 days", "Compliance"),
+        ("CDFI Compliance (Treasury)", "CRITICAL", ORANGE, "High", "90 days", "Operations"),
+        ("Fair Lending / ECOA", "CRITICAL", ORANGE, "High", "60 days", "Legal"),
+        ("AML / BSA / KYC", "CRITICAL", ORANGE, "High", "90 days", "BSA Officer"),
+        ("Information Security (GLBA)", "HIGH", BLUE, "High", "120 days", "IT / CISO"),
+        ("FCRA Compliance", "HIGH", BLUE, "Medium", "45 days", "Underwriting"),
+        ("Data Privacy (CCPA/CPRA)", "HIGH", BLUE, "Medium", "90 days", "Legal"),
+        ("Consumer Protection (TILA)", "MODERATE", TEAL, "Medium", "60 days", "Compliance"),
     ]
 
     for i, (name, crit, crit_color, effort, timeline, owner) in enumerate(rows):
-        row_h = 26
+        row_h = 28
         ry = y - row_h
 
         if i % 2 == 0:
             c.setFillColor(Color(0.96, 0.97, 0.98, 1))
             c.rect(cols[0], ry, cols[-1] - cols[0], row_h, fill=1, stroke=0)
 
-        c.setFont("OpenSans-SemiBold", 7.5)
+        c.setFont("OpenSans-SemiBold", 8.5)
         c.setFillColor(DARK)
-        c.drawString(cols[0] + 8, ry + 8, name)
+        c.drawString(cols[0] + 8, ry + 9, name)
 
         # Criticality badge
-        badge_w = pdfmetrics.stringWidth(crit, "OpenSans-Bold", 6.5) + 14
+        badge_w = pdfmetrics.stringWidth(crit, "OpenSans-Bold", 7.5) + 16
         c.setFillColor(Color(crit_color.red, crit_color.green, crit_color.blue, 0.15))
-        c.roundRect(cols[1] + 8, ry + 5, badge_w, 15, 7, fill=1, stroke=0)
-        c.setFont("OpenSans-Bold", 6.5)
+        c.roundRect(cols[1] + 8, ry + 6, badge_w, 17, 8, fill=1, stroke=0)
+        c.setFont("OpenSans-Bold", 7.5)
         c.setFillColor(crit_color)
-        c.drawString(cols[1] + 15, ry + 9, crit)
+        c.drawString(cols[1] + 16, ry + 10, crit)
 
-        c.setFont("OpenSans", 7.5)
+        c.setFont("OpenSans", 8.5)
         c.setFillColor(GREY)
-        c.drawString(cols[2] + 8, ry + 8, effort)
-        c.drawString(cols[3] + 8, ry + 8, timeline)
+        c.drawString(cols[2] + 8, ry + 9, effort)
+        c.drawString(cols[3] + 8, ry + 9, timeline)
 
-        c.setFont("OpenSans-Light", 7)
-        c.drawString(cols[4] + 8, ry + 8, owner)
+        c.setFont("OpenSans-Light", 8)
+        c.drawString(cols[4] + 8, ry + 9, owner)
 
         y -= row_h
 
     # Timeline visualization
     y -= 30
-    c.setFont("OpenSans-ExtraBold", 11)
+    c.setFont("OpenSans-ExtraBold", 13)
     c.setFillColor(BLUE)
     c.drawString(36, y, "IMPLEMENTATION TIMELINE")
     draw_ruled_line(c, 36, W - 36, y - 8, LIGHT_GREY, 0.5)
-    y -= 30
+    y -= 32
 
     # Timeline bar chart
     phases = [
@@ -795,29 +786,29 @@ def page_priority_matrix(c):
         ("Phase 6: Testing & Audit", 60, 120, TEAL),
     ]
 
-    bar_x = 200
+    bar_x = 220
     bar_max_w = W - 36 - bar_x
     max_days = 120
 
     # Day markers
     for d in [0, 30, 60, 90, 120]:
         dx = bar_x + (d / max_days) * bar_max_w
-        c.setFont("OpenSans-Light", 6)
+        c.setFont("OpenSans-Light", 7.5)
         c.setFillColor(GREY)
         c.drawCentredString(dx, y + 5, f"Day {d}")
-        draw_vertical_rule(c, dx, y - len(phases) * 22 - 5, y, Color(0.85, 0.87, 0.90, 0.5), 0.3)
+        draw_vertical_rule(c, dx, y - len(phases) * 26 - 5, y, Color(0.85, 0.87, 0.90, 0.5), 0.3)
 
     for i, (label, start, end, color) in enumerate(phases):
-        py = y - i * 22
+        py = y - i * 26
 
-        c.setFont("OpenSans-SemiBold", 6.5)
+        c.setFont("OpenSans-SemiBold", 8)
         c.setFillColor(DARK)
-        c.drawRightString(bar_x - 8, py - 8, label)
+        c.drawRightString(bar_x - 10, py - 9, label)
 
         sx = bar_x + (start / max_days) * bar_max_w
         ew = ((end - start) / max_days) * bar_max_w
         c.setFillColor(Color(color.red, color.green, color.blue, 0.8))
-        c.roundRect(sx, py - 12, ew, 10, 3, fill=1, stroke=0)
+        c.roundRect(sx, py - 14, ew, 13, 4, fill=1, stroke=0)
 
     c.showPage()
 
@@ -832,18 +823,18 @@ def page_next_steps(c):
     draw_header(c, 8, "NEXT STEPS & ENGAGEMENT")
     draw_footer(c, 8)
 
-    y = H - 85
+    y = H - 82
 
-    c.setFont("OpenSans-ExtraBold", 11)
+    c.setFont("OpenSans-ExtraBold", 13)
     c.setFillColor(BLUE)
     c.drawString(36, y, "RECOMMENDED NEXT STEPS")
     draw_ruled_line(c, 36, W - 36, y - 8, LIGHT_GREY, 0.5)
     y -= 30
 
     steps = [
-        ("01", "COMPLIANCE GAP ASSESSMENT", "Technijian will conduct a comprehensive gap analysis comparing AMPAC's current IT infrastructure, policies, and procedures against all 52 identified IT controls. This assessment produces a prioritized remediation roadmap with specific deliverables and timelines.", "5-10 Business Days", BLUE),
-        ("02", "GOVERNANCE & POLICY DEVELOPMENT", "Establish compliance governance structure including Chief Compliance Officer designation, BSA/AML Officer appointment, and board-level oversight committee. Develop all required written policies, procedures, and program documentation.", "30 Days", ORANGE),
-        ("03", "TECHNOLOGY IMPLEMENTATION", "Deploy and configure all IT control systems including identity verification, OFAC screening, transaction monitoring, encryption, IAM, EDR, and compliance management platforms aligned to framework requirements.", "60-90 Days", TEAL),
+        ("01", "COMPLIANCE GAP ASSESSMENT", "Technijian conducts a comprehensive gap analysis comparing AMPAC's current IT infrastructure, policies, and procedures against all 52 identified IT controls.", "5-10 Business Days", BLUE),
+        ("02", "GOVERNANCE & POLICY DEVELOPMENT", "Establish compliance governance structure including CCO designation, BSA/AML Officer appointment, and board-level oversight. Develop all required policies and documentation.", "30 Days", ORANGE),
+        ("03", "TECHNOLOGY IMPLEMENTATION", "Deploy and configure all IT control systems including identity verification, OFAC screening, transaction monitoring, encryption, IAM, EDR, and compliance platforms.", "60-90 Days", TEAL),
         ("04", "STAFF TRAINING & CERTIFICATION", "Deliver role-based compliance training covering fair lending, AML/KYC, data security, privacy requirements, and SBA regulatory updates. Establish ongoing training calendar and certification tracking.", "Ongoing", BLUE),
         ("05", "INDEPENDENT TESTING & AUDIT", "Conduct independent testing of all compliance programs including AML/BSA audit, fair lending review, information security risk assessment, and CDFI certification compliance verification.", "Annual", ORANGE),
     ]
@@ -859,31 +850,31 @@ def page_next_steps(c):
         c.rect(36, y - card_h, 4, card_h, fill=1, stroke=0)
 
         # Number
-        c.setFont("OpenSans-ExtraBold", 18)
+        c.setFont("OpenSans-ExtraBold", 20)
         c.setFillColor(color)
-        c.drawString(50, y - 24, num)
+        c.drawString(50, y - 26, num)
 
         # Title
-        c.setFont("OpenSans-Bold", 9)
+        c.setFont("OpenSans-Bold", 10.5)
         c.setFillColor(DARK)
-        c.drawString(82, y - 16, title)
+        c.drawString(84, y - 18, title)
 
         # Timeline badge
-        tw = pdfmetrics.stringWidth(timeline, "OpenSans-SemiBold", 6.5) + 14
+        tw = pdfmetrics.stringWidth(timeline, "OpenSans-SemiBold", 8) + 16
         c.setFillColor(Color(color.red, color.green, color.blue, 0.12))
-        c.roundRect(W - 36 - tw - 12, y - 20, tw, 16, 8, fill=1, stroke=0)
-        c.setFont("OpenSans-SemiBold", 6.5)
+        c.roundRect(W - 36 - tw - 12, y - 22, tw, 18, 9, fill=1, stroke=0)
+        c.setFont("OpenSans-SemiBold", 8)
         c.setFillColor(color)
-        c.drawString(W - 36 - tw - 5, y - 16, timeline)
+        c.drawString(W - 36 - tw - 4, y - 17, timeline)
 
         # Description
-        text_block(c, desc, 82, y - 32, "OpenSans-Light", 7, GREY, max_w=W - 72 - 60, leading=9.5)
+        text_block(c, desc, 84, y - 36, "OpenSans-Light", 8.5, GREY, max_w=W - 72 - 66, leading=11)
 
         y -= card_h + 10
 
     # Contact section
-    y -= 15
-    c.setFont("OpenSans-ExtraBold", 11)
+    y -= 12
+    c.setFont("OpenSans-ExtraBold", 13)
     c.setFillColor(BLUE)
     c.drawString(36, y, "CONTACT")
     draw_ruled_line(c, 36, W - 36, y - 8, LIGHT_GREY, 0.5)
@@ -893,20 +884,21 @@ def page_next_steps(c):
     c.setFillColor(DARK)
     c.roundRect(36, y - 90, W - 72, 90, 6, fill=1, stroke=0)
 
-    draw_logo(c, 52, y - 50, h=22)
+    draw_logo(c, 52, y - 55, h=26, dark_bg=True)
 
-    c.setFont("OpenSans-Bold", 10)
+    c.setFont("OpenSans-Bold", 12)
     c.setFillColor(white)
     c.drawString(200, y - 25, "Technijian")
-    c.setFont("OpenSans-Light", 8)
+    c.setFont("OpenSans-Light", 9)
     c.setFillColor(Color(1, 1, 1, 0.7))
     c.drawString(200, y - 40, "Technology as a Solution")
 
-    c.setFont("OpenSans", 7.5)
+    c.setFont("OpenSans", 9)
     c.setFillColor(TEAL)
     c.drawString(200, y - 58, "18 Technology Dr, Ste 141, Irvine, CA 92618")
+    c.setFont("OpenSans", 8.5)
     c.setFillColor(Color(1, 1, 1, 0.6))
-    c.drawString(200, y - 72, "949.379.8500  |  technijian.com  |  RJain@technijian.com")
+    c.drawString(200, y - 73, "949.379.8500  |  technijian.com  |  RJain@technijian.com")
 
     # Orange bottom accent on card
     c.setFillColor(ORANGE)
