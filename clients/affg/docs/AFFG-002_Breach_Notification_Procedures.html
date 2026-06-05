@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AFFG Breach Notification Procedures — Technijian</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:       #006DB6;
+  --orange:     #F67D4B;
+  --teal:       #1EAAC8;
+  --dark:       #1A1A2E;
+  --grey:       #59595B;
+  --off-white:  #F8F9FA;
+  --lt-grey:    #E9ECEF;
+  --text:       #2D2D2D;
+  --red:        #CC0000;
+  --green:      #28A745;
+}
+@page { size: letter; margin: 0; }
+*  { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif; color: var(--text); background:#fff; font-size:11pt; line-height:1.65; }
+
+/* ── PAGE SHELL ────────────────────────────────────────── */
+.page { width:8.5in; min-height:11in; position:relative; display:flex; flex-direction:column; page-break-after:always; }
+.page:last-child { page-break-after:auto; }
+
+/* ── HEADER ────────────────────────────────────────────── */
+.hdr { padding:.52in .85in .18in .85in; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.hdr-logo img { height:48px; width:auto; display:block; }
+.hdr-meta { text-align:right; }
+.hdr-meta .doc-id { font-size:9pt; font-weight:700; color:var(--blue); letter-spacing:1.4px; text-transform:uppercase; margin-bottom:3px; }
+.hdr-meta .doc-status { font-size:9pt; color:var(--grey); }
+.hdr-meta .confidential { font-size:8pt; font-weight:700; color:var(--red); letter-spacing:.8px; text-transform:uppercase; margin-top:2px; }
+.accent-rule { height:3px; margin:0 .85in; background:linear-gradient(90deg, var(--orange) 0% 33%, var(--teal) 33% 66%, var(--blue) 66% 100%); }
+
+/* ── COVER PAGE ────────────────────────────────────────── */
+.cover-body { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1in; text-align:center; gap:18px; }
+.cover-logo img { height:64px; }
+.cover-divider { width:80px; height:3px; background:var(--orange); margin:0 auto; }
+.cover-title { font-size:30pt; font-weight:800; color:var(--dark); line-height:1.2; margin-top:8px; }
+.cover-subtitle { font-size:14pt; color:var(--blue); font-weight:600; }
+.cover-client { font-size:11pt; color:var(--grey); }
+.cover-meta { margin-top:24px; }
+.cover-meta table { border-collapse:collapse; width:340px; }
+.cover-meta td { padding:5px 12px; font-size:10pt; color:var(--grey); text-align:left; border-bottom:1px solid var(--lt-grey); }
+.cover-meta td:first-child { font-weight:700; color:var(--dark); width:140px; }
+.cover-bottom { margin-top:auto; padding:24px 0 .5in; font-size:9pt; color:var(--red); font-weight:700; letter-spacing:.6px; text-transform:uppercase; }
+
+/* ── BODY PAGES ────────────────────────────────────────── */
+.body { flex:1; padding:.45in .95in .35in .95in; }
+.section-bar { display:flex; margin:22px 0 10px; }
+.section-bar .accent { width:4px; background:var(--blue); border-radius:2px; flex-shrink:0; }
+.section-bar .title { padding:6px 0 6px 12px; font-size:14pt; font-weight:700; color:var(--blue); }
+h3 { font-size:11.5pt; font-weight:700; color:var(--dark); margin:16px 0 6px; }
+h4 { font-size:10.5pt; font-weight:600; color:var(--blue); margin:12px 0 4px; }
+p  { margin-bottom:8px; color:var(--text); font-size:10.5pt; }
+ul, ol { margin:6px 0 10px 22px; }
+li { margin-bottom:4px; font-size:10.5pt; }
+strong { color:var(--dark); }
+
+/* ── TABLES ────────────────────────────────────────────── */
+table { width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:10pt; }
+thead tr { background:var(--blue); }
+thead th { color:#fff; font-weight:700; padding:7px 10px; text-align:left; }
+tbody tr:nth-child(odd)  { background:#fff; }
+tbody tr:nth-child(even) { background:var(--off-white); }
+tbody td { padding:6px 10px; border-bottom:1px solid var(--lt-grey); vertical-align:top; }
+.badge { display:inline-block; padding:2px 8px; border-radius:3px; font-size:9pt; font-weight:700; }
+.badge-draft { background:#FFF3CD; color:#856404; }
+.deadline-row td { font-weight:700; color:var(--dark); background:#FFF3CD; }
+
+/* ── CALLOUT BOXES ─────────────────────────────────────── */
+.callout { border-left:4px solid var(--orange); background:var(--off-white); padding:10px 14px; margin:12px 0; border-radius:0 4px 4px 0; font-size:10.5pt; }
+.callout strong { color:var(--orange); }
+.info-box { border:1px solid var(--lt-grey); border-top:3px solid var(--teal); background:var(--off-white); padding:10px 14px; margin:10px 0; border-radius:0 0 4px 4px; font-size:10pt; }
+
+/* ── SIGNATURE BLOCK ───────────────────────────────────── */
+.sig-table { width:100%; border-collapse:collapse; margin:14px 0; font-size:10pt; }
+.sig-table th { background:var(--off-white); color:var(--dark); font-weight:700; padding:7px 10px; border:1px solid var(--lt-grey); text-align:left; }
+.sig-table td { padding:7px 10px; border:1px solid var(--lt-grey); }
+.sig-line { border-bottom:1px solid var(--dark); width:160px; display:inline-block; margin-bottom:2px; }
+
+/* ── FOOTER ────────────────────────────────────────────── */
+.foot-rule { height:1px; background:var(--lt-grey); margin:0 .95in; }
+.foot { padding:10px .95in .45in; display:flex; justify-content:space-between; align-items:center; font-size:9pt; color:var(--grey); }
+.foot .brand { font-weight:700; color:var(--dark); }
+.foot .conf  { color:var(--red); font-weight:700; font-size:8pt; letter-spacing:.5px; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta">
+      <div class="doc-id">AFFG-002 · v1.0</div>
+      <div class="doc-status">Portal Ticket #1459346</div>
+      <div class="confidential">Confidential</div>
+    </div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <div class="cover-body">
+    <div class="cover-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="cover-divider"></div>
+    <div class="cover-title">Breach Notification Procedures</div>
+    <div class="cover-subtitle">Customer Notification Program</div>
+    <div class="cover-client">American Fundstars Financial Group LLC</div>
+    <div class="cover-meta">
+      <table>
+        <tr><td>Document ID</td><td>AFFG-002</td></tr>
+        <tr><td>Version</td><td>1.0</td></tr>
+        <tr><td>Date</td><td>June 5, 2026</td></tr>
+        <tr><td>Status</td><td><span class="badge badge-draft">DRAFT — Pending Approval</span></td></tr>
+        <tr><td>Regulatory Basis</td><td>SEC Reg S-P (17 CFR §248.30(a)(2))</td></tr>
+        <tr><td>Prepared by</td><td>Ravi Jain, CEO — Technijian</td></tr>
+        <tr><td>Phase 1 Deadline</td><td>June 27, 2026</td></tr>
+      </table>
+    </div>
+    <div class="cover-bottom">Confidential — Technijian &amp; American Fundstars Financial Group LLC</div>
+  </div>
+
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · technology as a solution · 18 Technology Dr., Ste 141, Irvine, CA 92618 · 949.379.8499 · technijian.com</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 2 — PURPOSE / TRIGGERS / DETERMINATION / TIMELINE
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta"><div class="doc-id">AFFG-002 — Breach Notification Procedures</div></div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <main class="body">
+
+    <div class="section-bar"><div class="accent"></div><div class="title">1. Purpose</div></div>
+    <p>This document establishes AFFG's written procedures for notifying customers whose sensitive information was, or is reasonably likely to have been, accessed without authorization. These procedures satisfy the requirement under <strong>SEC Regulation S-P (2024 amendments)</strong> that covered institutions must notify affected individuals no later than <strong>30 days</strong> after determining a notification event has occurred.</p>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">2. Notification Trigger Criteria</div></div>
+    <p>A notification obligation arises when the Incident Response Lead (Ravi Jain) makes a <strong>Notification Determination</strong>: a documented finding that sensitive customer information <strong>was, or is reasonably likely to have been, accessed without authorization</strong>.</p>
+
+    <h3>2.1 Sensitive Customer Information — Data Elements</h3>
+    <p>Notification is required when any of the following customer data elements were involved in an unauthorized access event, in combination with the customer's name:</p>
+    <table>
+      <thead><tr><th>Data Element</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Social Security Number (SSN)</strong></td><td>Full or partial SSN</td></tr>
+        <tr><td><strong>Government-issued ID number</strong></td><td>Driver's license, passport, state ID</td></tr>
+        <tr><td><strong>Financial account number</strong></td><td>Brokerage account, bank account number</td></tr>
+        <tr><td><strong>Credit or debit card number</strong></td><td>With or without expiration/CVV</td></tr>
+        <tr><td><strong>Security codes / passwords</strong></td><td>Account passwords, security questions, PINs</td></tr>
+        <tr><td><strong>Access credentials</strong></td><td>Username + password combinations</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout"><strong>Reasonably Likely Standard:</strong> Notification is required even where unauthorized access is <em>not confirmed</em> but is <em>reasonably likely</em> — meaning a reasonable person would conclude there is a material probability that data was accessed without authorization. <strong>When in doubt, notify.</strong> The cost of unnecessary notification is far lower than the regulatory risk of failing to notify when required.</div>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">3. Determination Process</div></div>
+    <h3>Step 1 — Incident Assessment (Day 0 to Day 5)</h3>
+    <p>The Incident Response Team (IRT) conducts a forensic investigation per AFFG-001 to determine: what systems were accessed; whether those systems contain sensitive customer information; whether there is evidence the attacker accessed, read, copied, or exfiltrated customer data; and whether unauthorized access is reasonably likely given the attack vector and attacker capability.</p>
+
+    <h3>Step 2 — Formal Notification Determination (must occur by Day 5)</h3>
+    <p>Ravi Jain (Incident Response Lead) makes a formal written determination: <strong>Notification required</strong> (30-day clock starts) or <strong>Notification not required</strong> (document the basis). The determination record must include: date, basis, decision-maker (Ravi Jain), and Iris Liu's acknowledgment.</p>
+
+    <h3>Step 3 — Scope Determination (Day 5 to Day 15)</h3>
+    <p>Identify the specific customers who must be notified. Pull the full list of all customers whose data was stored on or accessible through the affected systems; cross-reference with access evidence; when scope cannot be precisely determined, apply the reasonably-likely standard and include all customers whose data <em>could</em> have been accessed. Document the scoping methodology and the final customer list.</p>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">4. The 30-Day Notification Timeline</div></div>
+    <table>
+      <thead><tr><th>Milestone</th><th>Target Day</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>Notification Determination made and documented</td><td>Day 0</td><td>Ravi Jain</td></tr>
+        <tr><td>Iris Liu notified and acknowledges determination</td><td>Day 0</td><td>Ravi Jain → Iris Liu</td></tr>
+        <tr><td>Scoping complete (affected customer list finalized)</td><td>Day 10</td><td>Ravi Jain / Sai Revanth</td></tr>
+        <tr><td>Draft notification letter prepared</td><td>Day 12</td><td>Ravi Jain</td></tr>
+        <tr><td>Legal counsel review of notification letter</td><td>Day 15</td><td>AFFG legal counsel</td></tr>
+        <tr><td>AFFG registered principal approves final letter</td><td>Day 18</td><td>AFFG principal</td></tr>
+        <tr><td>Notification letters sent to all affected customers</td><td><strong>Day 25</strong></td><td>Iris Liu / Ravi Jain</td></tr>
+        <tr><td>Copies of all notifications filed in Reg S-P records</td><td>Day 25</td><td>Ravi Jain</td></tr>
+        <tr class="deadline-row"><td>Regulatory deadline</td><td>Day 30</td><td>— hard deadline —</td></tr>
+      </tbody>
+    </table>
+    <p><em>Day 25 target provides a 5-day buffer against the Day 30 regulatory deadline.</em></p>
+
+  </main>
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · AFFG Breach Notification Procedures (AFFG-002 v1.0) · June 5, 2026</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 3 — LETTER REQUIREMENTS / TEMPLATE A / DELIVERY / RECORDKEEPING / SP EVENTS / APPROVAL
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta"><div class="doc-id">AFFG-002 — Breach Notification Procedures</div></div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <main class="body">
+
+    <div class="section-bar"><div class="accent"></div><div class="title">5. Notification Letter Content Requirements</div></div>
+    <p>All customer notification letters must include the following elements per Reg S-P:</p>
+    <ol>
+      <li><strong>Description of the incident</strong> — What happened, when it was discovered, and the nature of the unauthorized access (at a level of detail appropriate without compromising the investigation)</li>
+      <li><strong>Data elements involved</strong> — The specific types of sensitive information that were or may have been accessed (SSN, account numbers, etc.)</li>
+      <li><strong>Date range</strong> — The approximate timeframe during which the unauthorized access occurred</li>
+      <li><strong>Steps AFFG has taken</strong> — System remediation, enhanced security measures, and investigation actions</li>
+      <li><strong>Protective steps for the customer</strong> — Monitor financial accounts; place a fraud alert or credit freeze with credit bureaus; report suspicious activity to AFFG; FTC identity theft hotline (1-877-438-4338)</li>
+      <li><strong>AFFG contact information</strong> — How affected customers can reach AFFG for questions about the incident</li>
+      <li><strong>Credit monitoring offer</strong> — 12 months of free credit monitoring is strongly recommended by regulators</li>
+    </ol>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">6. Notification Letter Template A — Confirmed Unauthorized Access</div></div>
+    <div class="info-box">
+      <strong>Template A</strong> is used when unauthorized access has been confirmed. The letter must be printed on AFFG letterhead and include: the incident date and discovery date; a plain-language description of what happened; the specific data elements involved; the steps AFFG has taken; the four protective steps listed above (account monitoring, fraud alert, credit freeze, FTC report); a 12-month complimentary credit monitoring enrollment offer with instructions; and AFFG's dedicated response contact information.<br><br>
+      <strong>Template B (Precautionary Notice)</strong> uses the same structure but modifies the "What Happened" section to state that while there is no definitive evidence of access, unauthorized access was <em>reasonably likely</em>, and AFFG is notifying all customers whose information may have been at risk out of an abundance of caution and in compliance with regulatory obligations.
+    </div>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">7. Delivery Methods</div></div>
+    <p>Notification letters must be sent by one or more of the following methods, chosen to maximize the likelihood of receipt:</p>
+    <ol>
+      <li><strong>First-class mail</strong> to the customer's address of record — required in all cases</li>
+      <li><strong>Email</strong> to the customer's email address of record — in addition to mail, not instead of</li>
+      <li>For high-risk accounts (large balances, prior concerns): <strong>Certified mail</strong> with return receipt</li>
+    </ol>
+    <div class="callout"><strong>Important:</strong> Electronic-only notification is <em>not sufficient</em> to satisfy the 30-day requirement. First-class mail is mandatory in all cases.</div>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">8. Recordkeeping — 5-Year Retention (Reg S-P)</div></div>
+    <div class="info-box">
+      All of the following must be filed in the Reg S-P compliance records repository within 5 business days of sending notifications, and retained for <strong>5 years</strong>: the notification determination document (date, basis, decision-maker); the final affected customer list; copies of all notification letters sent; proof of delivery (mailing confirmation, email delivery records); any communications with legal counsel regarding the notification; documentation of why any customer on the exposure list was excluded from notification.
+    </div>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">9. Service Provider Notification Events</div></div>
+    <p>When AFFG receives a breach notification from a service provider (AT&amp;T, RingCentral, AWS, Microsoft, Synology, or any other vendor), the following steps apply:</p>
+    <ol>
+      <li>Ravi Jain reviews the service provider notification within <strong>24 hours</strong> of receipt</li>
+      <li>Makes a Notification Determination: did the vendor breach involve sensitive AFFG customer information?</li>
+      <li>If yes (or reasonably likely): <strong>30-day clock starts</strong> from the date AFFG determines notification is required — not necessarily the date the vendor notified AFFG</li>
+      <li>Request from the vendor: full details of what data was accessed, the timeframe, and the affected records</li>
+    </ol>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">10. Approval</div></div>
+    <table class="sig-table">
+      <thead><tr><th>Role</th><th>Name</th><th>Signature</th><th>Date</th></tr></thead>
+      <tbody>
+        <tr><td>IT Provider / Incident Response Lead</td><td>Ravi Jain, CEO — Technijian</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+        <tr><td>AFFG Primary Contact</td><td>Iris Liu</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+        <tr><td>AFFG Registered Principal</td><td>&nbsp;</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+      </tbody>
+    </table>
+
+  </main>
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · AFFG Breach Notification Procedures (AFFG-002 v1.0) · June 5, 2026</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+</body>
+</html>

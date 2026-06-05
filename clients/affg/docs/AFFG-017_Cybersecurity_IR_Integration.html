@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AFFG Cybersecurity IR Integration — Technijian</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:       #006DB6;
+  --orange:     #F67D4B;
+  --teal:       #1EAAC8;
+  --dark:       #1A1A2E;
+  --grey:       #59595B;
+  --off-white:  #F8F9FA;
+  --lt-grey:    #E9ECEF;
+  --text:       #2D2D2D;
+  --red:        #CC0000;
+  --green:      #28A745;
+}
+@page { size: letter; margin: 0; }
+*  { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif; color: var(--text); background:#fff; font-size:11pt; line-height:1.65; }
+
+/* ── PAGE SHELL ────────────────────────────────────────── */
+.page { width:8.5in; min-height:11in; position:relative; display:flex; flex-direction:column; page-break-after:always; }
+.page:last-child { page-break-after:auto; }
+
+/* ── HEADER ────────────────────────────────────────────── */
+.hdr { padding:.52in .85in .18in .85in; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.hdr-logo img { height:48px; width:auto; display:block; }
+.hdr-meta { text-align:right; }
+.hdr-meta .doc-id { font-size:9pt; font-weight:700; color:var(--blue); letter-spacing:1.4px; text-transform:uppercase; margin-bottom:3px; }
+.hdr-meta .doc-status { font-size:9pt; color:var(--grey); }
+.hdr-meta .confidential { font-size:8pt; font-weight:700; color:var(--red); letter-spacing:.8px; text-transform:uppercase; margin-top:2px; }
+.accent-rule { height:3px; margin:0 .85in; background:linear-gradient(90deg, var(--orange) 0% 33%, var(--teal) 33% 66%, var(--blue) 66% 100%); }
+
+/* ── COVER PAGE ────────────────────────────────────────── */
+.cover-body { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1in; text-align:center; gap:18px; }
+.cover-logo img { height:64px; }
+.cover-divider { width:80px; height:3px; background:var(--orange); margin:0 auto; }
+.cover-title { font-size:30pt; font-weight:800; color:var(--dark); line-height:1.2; margin-top:8px; }
+.cover-subtitle { font-size:14pt; color:var(--blue); font-weight:600; }
+.cover-client { font-size:11pt; color:var(--grey); }
+.cover-meta { margin-top:24px; }
+.cover-meta table { border-collapse:collapse; width:340px; }
+.cover-meta td { padding:5px 12px; font-size:10pt; color:var(--grey); text-align:left; border-bottom:1px solid var(--lt-grey); }
+.cover-meta td:first-child { font-weight:700; color:var(--dark); width:140px; }
+.cover-bottom { margin-top:auto; padding:24px 0 .5in; font-size:9pt; color:var(--red); font-weight:700; letter-spacing:.6px; text-transform:uppercase; }
+
+/* ── BODY PAGES ────────────────────────────────────────── */
+.body { flex:1; padding:.45in .95in .35in .95in; }
+.section-bar { display:flex; margin:22px 0 10px; }
+.section-bar .accent { width:4px; background:var(--blue); border-radius:2px; flex-shrink:0; }
+.section-bar .title { padding:6px 0 6px 12px; font-size:14pt; font-weight:700; color:var(--blue); }
+h3 { font-size:11.5pt; font-weight:700; color:var(--dark); margin:16px 0 6px; }
+h4 { font-size:10.5pt; font-weight:600; color:var(--blue); margin:12px 0 4px; }
+p  { margin-bottom:8px; color:var(--text); font-size:10.5pt; }
+ul, ol { margin:6px 0 10px 22px; }
+li { margin-bottom:4px; font-size:10.5pt; }
+strong { color:var(--dark); }
+
+/* ── TABLES ────────────────────────────────────────────── */
+table { width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:10pt; }
+thead tr { background:var(--blue); }
+thead th { color:#fff; font-weight:700; padding:7px 10px; text-align:left; }
+tbody tr:nth-child(odd)  { background:#fff; }
+tbody tr:nth-child(even) { background:var(--off-white); }
+tbody td { padding:6px 10px; border-bottom:1px solid var(--lt-grey); vertical-align:top; }
+.severity-critical { color:var(--red); font-weight:700; }
+.severity-high     { color:var(--orange); font-weight:700; }
+.severity-medium   { color:var(--teal); font-weight:700; }
+.severity-low      { color:var(--grey); }
+.badge { display:inline-block; padding:2px 8px; border-radius:3px; font-size:9pt; font-weight:700; }
+.badge-draft { background:#FFF3CD; color:#856404; }
+
+/* ── CALLOUT BOXES ─────────────────────────────────────── */
+.callout { border-left:4px solid var(--orange); background:var(--off-white); padding:10px 14px; margin:12px 0; border-radius:0 4px 4px 0; font-size:10.5pt; }
+.callout strong { color:var(--orange); }
+.info-box { border:1px solid var(--lt-grey); border-top:3px solid var(--teal); background:var(--off-white); padding:10px 14px; margin:10px 0; border-radius:0 0 4px 4px; font-size:10pt; }
+
+/* ── ARCHITECTURE DIAGRAM ──────────────────────────────── */
+.arch-block { font-family: 'Courier New', Courier, monospace; font-size:9pt; background:var(--off-white); border:1px solid var(--lt-grey); border-left:4px solid var(--teal); padding:12px 16px; margin:10px 0 16px; border-radius:0 4px 4px 0; line-height:1.7; color:var(--dark); white-space:pre; }
+
+/* ── CHECKLIST ─────────────────────────────────────────── */
+.checklist-table { width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:9.5pt; }
+.checklist-table thead tr { background:var(--blue); }
+.checklist-table thead th { color:#fff; font-weight:700; padding:7px 10px; text-align:left; }
+.checklist-table tbody tr:nth-child(odd)  { background:#fff; }
+.checklist-table tbody tr:nth-child(even) { background:var(--off-white); }
+.checklist-table tbody td { padding:5px 10px; border-bottom:1px solid var(--lt-grey); vertical-align:top; }
+.check-item { display:flex; align-items:flex-start; gap:6px; margin-bottom:4px; }
+.chk { display:inline-block; width:12px; height:12px; border:1.5px solid var(--grey); border-radius:2px; flex-shrink:0; margin-top:2px; }
+.col-head { font-size:9.5pt; font-weight:700; color:var(--dark); margin-bottom:6px; padding-bottom:3px; border-bottom:2px solid var(--blue); }
+
+/* ── SIGNATURE BLOCK ───────────────────────────────────── */
+.sig-table { width:100%; border-collapse:collapse; margin:14px 0; font-size:10pt; }
+.sig-table th { background:var(--off-white); color:var(--dark); font-weight:700; padding:7px 10px; border:1px solid var(--lt-grey); text-align:left; }
+.sig-table td { padding:7px 10px; border:1px solid var(--lt-grey); }
+.sig-line { border-bottom:1px solid var(--dark); width:160px; display:inline-block; margin-bottom:2px; }
+
+/* ── FOOTER ────────────────────────────────────────────── */
+.foot-rule { height:1px; background:var(--lt-grey); margin:0 .95in; }
+.foot { padding:10px .95in .45in; display:flex; justify-content:space-between; align-items:center; font-size:9pt; color:var(--grey); }
+.foot .brand { font-weight:700; color:var(--dark); }
+.foot .conf  { color:var(--red); font-weight:700; font-size:8pt; letter-spacing:.5px; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta">
+      <div class="doc-id">AFFG-017 · v1.0</div>
+      <div class="doc-status">Portal Ticket #1459361</div>
+      <div class="confidential">Confidential</div>
+    </div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <div class="cover-body">
+    <div class="cover-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="cover-divider"></div>
+    <div class="cover-title">Cybersecurity Incident Response Integration</div>
+    <div class="cover-subtitle">BCP Cybersecurity Integration Section</div>
+    <div class="cover-client">American Fundstars Financial Group LLC</div>
+    <div class="cover-meta">
+      <table>
+        <tr><td>Document ID</td><td>AFFG-017</td></tr>
+        <tr><td>Version</td><td>1.0</td></tr>
+        <tr><td>Date</td><td>June 5, 2026</td></tr>
+        <tr><td>Status</td><td><span class="badge badge-draft">DRAFT — Pending Approval</span></td></tr>
+        <tr><td>Regulatory Basis</td><td>SEC Reg S-P; FINRA Rule 4370; NIST SP 800-61r2</td></tr>
+        <tr><td>Prepared by</td><td>Ravi Jain, CEO — Technijian</td></tr>
+        <tr><td>Portal Ticket</td><td>#1459361</td></tr>
+      </table>
+    </div>
+    <div class="cover-bottom">Confidential — Technijian &amp; American Fundstars Financial Group LLC</div>
+  </div>
+
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · technology as a solution · 18 Technology Dr., Ste 141, Irvine, CA 92618 · 949.379.8499 · technijian.com</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 2 — PURPOSE / SECURITY STACK / COVERAGE GAPS
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta"><div class="doc-id">AFFG-017 — Cybersecurity IR Integration</div></div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <main class="body">
+
+    <div class="section-bar"><div class="accent"></div><div class="title">1. Purpose and Relationship to Other Documents</div></div>
+    <p>This document integrates AFFG's cybersecurity incident response capabilities into the Business Continuity Plan (BCP) framework. It replaces the former vague "Unauthorized Access" section with concrete, tool-specific procedures tied to the security stack Technijian manages for AFFG.</p>
+
+    <table>
+      <thead><tr><th>Document</th><th>Role</th></tr></thead>
+      <tbody>
+        <tr><td><strong>AFFG-001</strong> — Incident Response Plan</td><td>Master IR plan: detection → containment → forensics → eradication → recovery. <strong>Go there first for any incident.</strong></td></tr>
+        <tr><td><strong>AFFG-002</strong> — Breach Notification Procedures</td><td>When and how to notify customers under Reg S-P (30-day clock, letter templates)</td></tr>
+        <tr><td><strong>AFFG-003</strong> — Service Provider Oversight Framework</td><td>Vendor breach notifications, 72-hour clause requirements</td></tr>
+        <tr><td><strong>AFFG-017</strong> ← <em>this document</em></td><td>Cybersecurity-specific control integration: tool configuration, network architecture, law enforcement, cyber insurance</td></tr>
+        <tr><td><strong>AFFG-005/006</strong> — BCP Recovery Procedures</td><td>Operational recovery after a cyber incident (RTO/RPO, system restart sequences)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">2.1 Technijian-Managed Security Stack</div></div>
+    <p>The following controls are active and managed by Technijian on behalf of AFFG. All alerts route to Technijian's monitoring team before escalation per AFFG-001 Section 4.</p>
+
+    <table>
+      <thead><tr><th>Layer</th><th>Tool</th><th>Version / Device</th><th>Coverage</th><th>Alert Routing</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Endpoint Detection &amp; Response</strong></td><td>Huntress (EDR/MDR)</td><td>Latest — auto-updated</td><td>All AFFG endpoints; device LEON confirmed</td><td>Portal ticket → Sai Revanth → Ravi Jain</td></tr>
+        <tr><td><strong>Network Perimeter</strong></td><td>Sophos Firewall</td><td>AFFG-HQ-FW-02</td><td>All ingress/egress traffic at main office</td><td>Portal ticket → Technijian NOC → Ravi Jain</td></tr>
+        <tr><td><strong>DNS Security</strong></td><td>Cisco Umbrella</td><td>Tenant-wide</td><td>All DNS queries from AFFG network + endpoints</td><td>Alert → Technijian monitoring</td></tr>
+        <tr><td><strong>Identity / Cloud</strong></td><td>Microsoft 365 Admin</td><td>Tenant-wide</td><td>Sign-in anomalies, admin changes, bulk data access</td><td>Technijian M365 monitoring → Ravi Jain</td></tr>
+        <tr><td><strong>Backup Integrity</strong></td><td>Nakivo / Veeam 365</td><td>Job: <code>Bkp_AFFG365</code></td><td>M365 data + local backup to Synology NAS</td><td>Portal ticket (auto-generated on failure)</td></tr>
+        <tr><td><strong>Endpoint Management</strong></td><td>ManageEngine Endpoint Central</td><td>All endpoints</td><td>Patch deployment, software inventory, policy enforcement</td><td>Technijian managed</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">2.2 Coverage Gaps and Known Limitations</div></div>
+    <p>The following gaps must be tracked and remediated:</p>
+
+    <table>
+      <thead><tr><th>Gap</th><th>Risk</th><th>Remediation Owner</th><th>Target</th></tr></thead>
+      <tbody>
+        <tr><td>Huntress agent coverage drift (LEON only confirmed)</td><td>Endpoints without agents are blind spots</td><td>Sai Revanth</td><td>Verify 100% enrollment — AFFG-022</td></tr>
+        <tr><td>No SIEM/log aggregation</td><td>Correlating events across tools requires manual effort</td><td>Ravi Jain</td><td>Evaluate in Phase 3</td></tr>
+        <tr><td>Synology NAS — no remote monitoring agent</td><td>Local backup appliance not monitored for unauthorized access</td><td>Sai Revanth</td><td>Add Technijian monitoring access</td></tr>
+        <tr><td>Email filtering / anti-phishing</td><td>No dedicated phishing simulation or mail security tool confirmed</td><td>Ravi Jain</td><td>Verify M365 Defender ATP status</td></tr>
+      </tbody>
+    </table>
+
+  </main>
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · AFFG Cybersecurity IR Integration (AFFG-017 v1.0) · June 5, 2026</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 3 — NETWORK ARCH / MFA / CYBER INSURANCE
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta"><div class="doc-id">AFFG-017 — Cybersecurity IR Integration</div></div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <main class="body">
+
+    <div class="section-bar"><div class="accent"></div><div class="title">3. Network Architecture and Segmentation</div></div>
+    <h3>3.1 Current Architecture (as of June 2026)</h3>
+
+    <div class="arch-block">Internet
+    │
+    ▼
+Sophos Firewall (AFFG-HQ-FW-02)      ← perimeter control
+    │
+    ├── AFFG Office LAN
+    │       ├── LEON (workstation — Huntress-protected)
+    │       ├── Synology NAS DiskStation (local backup)
+    │       └── [additional endpoints — verify with Iris]
+    │
+    └── Cloud Services (via Umbrella DNS protection)
+            ├── Microsoft 365 (Exchange, SharePoint, OneDrive)
+            ├── AWS (cloud-hosted applications/data — [verify scope with Iris])
+            └── RingCentral / AT&T (telecommunications)</div>
+
+    <h3>3.2 Segmentation Requirements</h3>
+    <table>
+      <thead><tr><th>Requirement</th><th>Status</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>Backup devices (Synology NAS) isolated from primary LAN</td><td>[VERIFY WITH IRIS]</td><td>Sai Revanth</td></tr>
+        <tr><td>Guest Wi-Fi separated from corporate LAN</td><td>[VERIFY WITH IRIS]</td><td>Sai Revanth</td></tr>
+        <tr><td>Admin credentials not shared between systems</td><td>[VERIFY WITH IRIS]</td><td>Sai Revanth</td></tr>
+        <tr><td>Remote access limited to MFA-enforced VPN or Zero Trust</td><td>[VERIFY WITH IRIS]</td><td>Ravi Jain</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><strong>Action:</strong> Sai Revanth to confirm segmentation status during next on-site visit and document in AFFG-022 (Security Baseline Assessment).</div>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">4. Multi-Factor Authentication (MFA) Requirements</div></div>
+    <p>MFA is mandatory for all AFFG accounts with access to customer data. Non-negotiable minimum:</p>
+    <table>
+      <thead><tr><th>System</th><th>MFA Required</th><th>Current Status</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>Microsoft 365 (all users)</td><td><strong>Yes</strong></td><td>[VERIFY enrollment via M365 Admin → MFA Status report]</td><td>Ravi Jain</td></tr>
+        <tr><td>AWS Management Console</td><td><strong>Yes</strong></td><td>[VERIFY with Iris]</td><td>Iris Liu</td></tr>
+        <tr><td>Sophos Central (firewall management)</td><td><strong>Yes</strong></td><td>Managed by Technijian</td><td>Sai Revanth</td></tr>
+        <tr><td>Huntress portal</td><td><strong>Yes</strong></td><td>Managed by Technijian</td><td>Sai Revanth</td></tr>
+        <tr><td>RingCentral admin portal</td><td><strong>Yes</strong></td><td>[VERIFY with Iris]</td><td>Iris Liu</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><strong>During a cybersecurity incident:</strong> MFA enrollment verification is a required step in containment. If any user account involved in an incident lacks MFA, Ravi Jain must be notified immediately for <span class="severity-critical">P1 escalation treatment</span> regardless of initial severity classification.</div>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">5. Cyber Insurance</div></div>
+    <h3>5.1 Policy Information</h3>
+    <table>
+      <thead><tr><th>Field</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Carrier</strong></td><td>[TO VERIFY WITH IRIS]</td></tr>
+        <tr><td><strong>Policy Number</strong></td><td>[TO VERIFY WITH IRIS]</td></tr>
+        <tr><td><strong>Claims Contact</strong></td><td>[TO VERIFY WITH IRIS]</td></tr>
+        <tr><td><strong>Coverage Type</strong></td><td>Cyber liability / data breach response [verify scope]</td></tr>
+        <tr><td><strong>Annual Review Date</strong></td><td>[TO VERIFY WITH IRIS]</td></tr>
+      </tbody>
+    </table>
+    <div class="info-box"><strong>Action:</strong> Iris Liu to provide cyber insurance carrier, policy number, and claims contact. This information is referenced in AFFG-001 Section 5.2 (Secondary Containment) and required before AFFG-016 capstone sign-off.</div>
+
+    <h3>5.2 Incident Notification Trigger</h3>
+    <p>Notify the cyber insurance carrier when <strong>any</strong> of the following occur:</p>
+    <ol>
+      <li>A P1 incident is declared (confirmed unauthorized access to customer data)</li>
+      <li>Ransomware is detected on any AFFG system</li>
+      <li>A Reg S-P Notification Determination is made</li>
+      <li>A service provider notifies AFFG of a breach involving AFFG customer data</li>
+    </ol>
+    <p><strong>Who notifies:</strong> Ravi Jain contacts the carrier within 24 hours of a P1 declaration or Notification Determination. <strong>What to provide:</strong> Date and time of discovery, brief description of incident, systems affected, estimated scope (if known), point of contact for the carrier.</p>
+
+    <h3>5.3 Breach Response Services via Insurance</h3>
+    <p>Many cyber insurance policies include pre-arranged breach response services. Confirm with carrier whether the policy includes:</p>
+    <ul>
+      <li>Digital forensics firm (on retainer through carrier)</li>
+      <li>Legal counsel specializing in SEC/FINRA breach notification</li>
+      <li>Credit monitoring vendor (for affected customers)</li>
+      <li>Public relations support</li>
+    </ul>
+
+  </main>
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · AFFG Cybersecurity IR Integration (AFFG-017 v1.0) · June 5, 2026</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 4 — FORENSICS / LAW ENFORCEMENT / BCP / REVIEW / APPROVAL
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta"><div class="doc-id">AFFG-017 — Cybersecurity IR Integration</div></div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <main class="body">
+
+    <div class="section-bar"><div class="accent"></div><div class="title">6.1 Evidence Collection Checklist</div></div>
+    <p style="font-size:10pt; margin-bottom:8px;">When a P1 or P2 incident is declared, Sai Revanth collects the following <strong>before any remediation:</strong></p>
+
+    <table class="checklist-table">
+      <thead><tr><th>Huntress</th><th>Sophos Firewall (AFFG-HQ-FW-02)</th><th>M365 / Cisco Umbrella / Nakivo</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="check-item"><span class="chk"></span><span>Export incident report from Huntress portal (PDF + JSON)</span></div>
+            <div class="check-item"><span class="chk"></span><span>Download all process execution logs and file activity logs for affected endpoints</span></div>
+            <div class="check-item"><span class="chk"></span><span>Capture Huntress isolation state before re-enabling network access</span></div>
+            <div class="check-item"><span class="chk"></span><span>Export threat hunting results for 30 days prior to incident</span></div>
+          </td>
+          <td>
+            <div class="check-item"><span class="chk"></span><span>Export firewall logs for 30 days prior (Sophos Central → Reports → Log Viewer)</span></div>
+            <div class="check-item"><span class="chk"></span><span>Export allowed/blocked connection reports</span></div>
+            <div class="check-item"><span class="chk"></span><span>Export IPS alerts for the incident period</span></div>
+            <div class="check-item"><span class="chk"></span><span>Capture current firewall configuration backup before any changes</span></div>
+          </td>
+          <td>
+            <div class="check-item"><span class="chk"></span><span><strong>M365:</strong> Export Unified Audit Log (90-day window)</span></div>
+            <div class="check-item"><span class="chk"></span><span><strong>M365:</strong> Export sign-in logs (Entra ID → affected accounts)</span></div>
+            <div class="check-item"><span class="chk"></span><span><strong>M365:</strong> Export mailbox audit logs; capture Entra Risky Users report</span></div>
+            <div class="check-item"><span class="chk"></span><span><strong>Umbrella:</strong> Export DNS query logs for affected IPs (30-day window) + blocked requests</span></div>
+            <div class="check-item"><span class="chk"></span><span><strong>Nakivo:</strong> Export backup job history for <code>Bkp_AFFG365</code>; note last successful timestamp; check for tampering</span></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>6.2 Chain of Custody</h3>
+    <table>
+      <thead><tr><th>Field</th><th>Required</th></tr></thead>
+      <tbody>
+        <tr><td>Item description</td><td>Yes</td></tr>
+        <tr><td>Collection date/time (UTC)</td><td>Yes</td></tr>
+        <tr><td>Collected by</td><td>Yes</td></tr>
+        <tr><td>Storage location</td><td>Yes</td></tr>
+        <tr><td>Hash (SHA-256) for disk images and log exports</td><td>Yes</td></tr>
+        <tr><td>Any transfers of custody (date, from, to)</td><td>Yes</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">7. Law Enforcement Coordination</div></div>
+    <table>
+      <thead><tr><th>Condition</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Ransomware with confirmed data exfiltration</td><td>Report to FBI Cyber Division (ic3.gov) and CISA</td></tr>
+        <tr><td>Nation-state or sophisticated persistent threat indicators</td><td>Report to CISA (cisa.gov / 1-888-282-0870)</td></tr>
+        <tr><td>Financial fraud (unauthorized account access, fund transfers)</td><td>Report to FBI and FinCEN</td></tr>
+        <tr><td>Identity theft of AFFG customers</td><td>FTC (reportfraud.ftc.gov) + local FBI field office</td></tr>
+        <tr><td>Any incident meeting FINRA's significant cybersecurity incident threshold</td><td>Notify FINRA per Rule 4370</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><strong>Authorization required:</strong> Ravi Jain in consultation with Iris Liu and AFFG legal counsel makes the decision to contact law enforcement. Do not contact law enforcement independently without authorization from AFFG principal/legal.</div>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">8.1 BCP Activation Triggers from Cyber Incident</div></div>
+    <table>
+      <thead><tr><th>Condition</th><th>BCP Activation Level</th></tr></thead>
+      <tbody>
+        <tr><td>Ransomware encrypting production systems</td><td><span class="severity-critical">Full BCP activation</span> — Ravi Jain + Iris Liu jointly</td></tr>
+        <tr><td>M365 tenant compromised or inaccessible</td><td><span class="severity-high">Partial BCP</span> — communications failover procedures</td></tr>
+        <tr><td>Sophos Firewall failure or compromise</td><td><span class="severity-high">Partial BCP</span> — network failover + emergency internet access</td></tr>
+        <tr><td>AWS or cloud provider outage caused by attack</td><td><span class="severity-medium">Partial BCP</span> — application failover procedures</td></tr>
+        <tr><td>Synology NAS compromised or encrypted</td><td><span class="severity-medium">Partial BCP</span> — recovery from M365 cloud backup only</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">9. Annual Cybersecurity Review</div></div>
+    <table>
+      <thead><tr><th>Review Item</th><th>Document</th><th>Frequency</th></tr></thead>
+      <tbody>
+        <tr><td>IRP tabletop exercise</td><td>AFFG-029</td><td>Annual</td></tr>
+        <tr><td>Security tools coverage audit</td><td>AFFG-022</td><td>Annual</td></tr>
+        <tr><td>Vulnerability assessment</td><td>AFFG-028</td><td>Annual</td></tr>
+        <tr><td>Service provider oversight review</td><td>AFFG-026</td><td>Annual</td></tr>
+        <tr><td>Cyber insurance policy renewal review</td><td>This document §5</td><td>Annual (at renewal)</td></tr>
+        <tr><td>Network segmentation verification</td><td>This document §3.2</td><td>Annual</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">10. Approval</div></div>
+    <table class="sig-table">
+      <thead><tr><th>Role</th><th>Name</th><th>Signature</th><th>Date</th></tr></thead>
+      <tbody>
+        <tr><td>IT Provider / Author</td><td>Ravi Jain, CEO — Technijian</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+        <tr><td>AFFG Primary Contact</td><td>Iris Liu</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+        <tr><td>AFFG Registered Principal</td><td>&nbsp;</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-box" style="margin-top:10px; font-size:9pt; color:var(--grey);">
+      <strong>Version History:</strong> v1.0 · 2026-06-05 · Ravi Jain / Technijian — Initial document; replaces vague "Unauthorized Access" section in prior BCP.<br>
+      <strong>Open items requiring Iris Liu input:</strong> (1) cyber insurance carrier/policy/claims contact [§5.1]; (2) network segmentation confirmation [§3.2]; (3) AWS scope clarification [§3.1]; (4) complete vendor list verification [AFFG-003]; (5) forensics retainer establishment [IRP-005].
+    </div>
+
+  </main>
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · AFFG Cybersecurity IR Integration (AFFG-017 v1.0) · June 5, 2026</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+</body>
+</html>
