@@ -1,0 +1,177 @@
+---
+name: technijian-email
+description: Generate brand-compliant Technijian email campaigns, newsletters, and signatures. Use when creating HTML email templates, newsletter content, email marketing campaigns, or employee email signatures for Technijian.
+---
+
+# Technijian Email Generator
+
+## Overview
+
+Generates Technijian-branded HTML email templates, newsletter content, and email signatures. All output is responsive, inline-styled for email client compatibility, and follows the Technijian Brand Guide 2026.
+
+**Keywords**: email, newsletter, email template, email signature, email campaign, marketing email, technijian, html email
+
+## Brand Colors (for inline CSS)
+
+```
+Core Orange: #F67D4B    Core Blue: #006DB6     Teal: #1EAAC8
+Dark Charcoal: #1A1A2E  Brand Grey: #59595B    Off White: #F8F9FA
+Light Grey: #E9ECEF     White: #FFFFFF
+```
+
+> **Single source of truth**: `assets/brand-tokens.json` holds the authoritative colors, tagline, logos, phone lines, and addresses. The hex values above are a cached convenience for inline-CSS speed — if anything looks off or you're unsure, read/sync from `brand-tokens.json` rather than trusting a pasted value, because hardcoded copies drift.
+
+> **Tagline**: "technology as a solution" — lowercase, no period. The old **"Technology Support, Your Way."** is RETIRED — never use it in subject lines, body, alt text, or footers.
+
+## Email Template Types
+
+### 1. Monthly Newsletter
+
+**Structure:**
+1. **Header**: Full logo (left, 200px), white background, 3px Core Blue bottom border
+2. **Hero section**: Dark Charcoal background, white headline (28px Bold), grey subtitle
+3. **Article blocks** (2-3): Blue H2 heading, grey body text, Orange CTA button
+4. **Dividers**: 1px `#E9ECEF` between blocks
+5. **Quick Tips section**: Teal bold labels + grey descriptions
+6. **CTA banner**: Core Blue background, white text, orange button
+7. **Footer**: Off White background, contact info, social links, unsubscribe
+
+### 2. Announcement Email
+
+**Structure:**
+1. **Header**: Same as newsletter
+2. **Hero**: Core Blue background, white centered headline (32px Bold), subtitle
+3. **Body**: 1-2 paragraphs of grey body text + centered orange CTA button
+4. **Footer**: Same as newsletter
+
+### 3. Event Invitation
+
+**Structure:**
+1. **Header**: Same as newsletter
+2. **Hero**: Dark Charcoal background, Teal "YOU'RE INVITED" label, white title
+3. **Event details**: Structured rows with Core Blue labels (DATE, TIME, LOCATION)
+4. **Description**: Grey body text + centered orange "RSVP Now" button
+5. **Footer**: Same as newsletter
+
+### 4. Employee Email Signature
+
+**Layout**: Two-column with blue vertical divider
+- **Left**: Full-color logo (140px)
+- **Right**: Name (16px, bold, Dark Charcoal), Title (13px, Core Blue), Contact (12px), Address (11px, grey)
+
+## HTML Email Rules
+
+### Technical Requirements
+- **Max width**: 600px for the email container
+- **All CSS must be inline** - no `<style>` blocks (stripped by many email clients)
+- **Use tables for layout** - `role="presentation"` on all layout tables
+- **Font stack**: `'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif`
+- **Images**: Always include `alt` text and `width` attribute
+- **CTA buttons**: Use table-based buttons (not `<a>` with background), for Outlook compatibility:
+  ```html
+  <table role="presentation" cellpadding="0" cellspacing="0">
+    <tr>
+      <td style="background-color:#F67D4B;border-radius:6px;">
+        <a href="#" style="display:inline-block;padding:12px 24px;font-size:14px;font-weight:600;color:#FFFFFF;text-decoration:none;">Button Text</a>
+      </td>
+    </tr>
+  </table>
+  ```
+
+### Styling Specs
+
+| Element | Style |
+|---------|-------|
+| H1 | 28-32px, Bold, White (on dark) or Core Blue (on light) |
+| H2 | 20-22px, Bold, Core Blue |
+| Body text | 16px, Regular, `#59595B`, line-height 1.6 |
+| Links | Core Blue `#006DB6`, no underline |
+| CTA button | Orange `#F67D4B`, white text, 6px radius, 12px 24px padding, Semi-Bold |
+| Preheader | Hidden div, max-height 0, overflow hidden |
+| Footer text | 13px, `#59595B` for info; 11px `#ADB5BD` for unsubscribe |
+
+### Standard Footer Content
+
+```html
+<strong>Technijian</strong><br>
+18 Technology Dr., Ste 141<br>
+Irvine, CA 92618<br>
+949.379.8499 | technijian.com
+```
+
+Always include: Social links (LinkedIn, X, Facebook), Unsubscribe link, Manage Preferences link.
+
+**Phone lines** — pick by purpose; default to the main line for footers and CTAs:
+- **949.379.8499** — MAIN switchboard (reaches USA + India). Use on footers, contact lines, and any general CTA.
+- **949.379.8500** — Sales DIRECT only.
+- **949.379.8501** — Billing DIRECT only.
+
+**Two offices** (pull exact strings from `assets/brand-tokens.json`): Irvine HQ — 18 Technology Dr., Ste 141, Irvine, CA 92618; Panchkula, India delivery center.
+
+## Email Copy Guidelines
+
+### Subject Lines
+- **Communicate value, not hype** ("3 ways to reduce IT downtime" not "AMAZING IT SECRETS!!!")
+- **Keep under 50 characters** for mobile preview
+- **Never use ALL CAPS** or excessive punctuation
+- **Personalize when possible** ("[First Name], your quarterly IT review is ready")
+
+### Body Copy
+- **Respect the reader's time** - get to the point
+- **One CTA per email section** - don't overwhelm with choices
+- **Lead with benefit** - what does the reader gain?
+- **Short paragraphs** - 2-3 sentences max per paragraph
+- **Clear CTA** - "Schedule a Call" beats "Click Here"; make the contact actionable in the body (949.379.8499 or a real scheduling link)
+- **Low-friction on-ramp** - the easiest first "yes" is the free **Nexus Assess** assessment (Network Detective: internal + external vulnerability scan + M365 review). Offer it as the lead CTA in cold/expansion outreach.
+
+### Honesty Discipline (applies to all email copy)
+- **No fabricated proof** - never invent metrics, case-study outcomes, customer quotes, or stats. The service is launching, so there are no completed client projects to cite; use anonymized industry profiles (scope/effort only).
+- **Dated near-term builds** - frame any not-yet-shipped capability as a dated near-term build, never as already delivered.
+- **Estimates are estimates** - flag any number as an estimate to be "confirmed at discovery."
+
+### Newsletter Specific
+- **2-3 articles per newsletter** - not more
+- **Each article**: Headline + 2-3 sentence summary + "Read More" button
+- **Include a "Quick Tips" section** for practical value
+- **End with a call-to-action banner** (contact us, schedule a review)
+
+### Verify Before Sending
+Never declare an email done unverified. Preview the **rendered** message (not the raw HTML source) at send size and confirm:
+- The signature/footer shows the correct phone line (default 949.379.8499) and the current tagline; **no** retired "Technology Support, Your Way." string anywhere.
+- All merge fields (`[First Name]`, `[Company]`, dates) are filled — no placeholder leaks.
+- Every link resolves and the logo loads with correct alt text.
+
+## Logo for Email
+
+Use the hosted logo URL in all email templates:
+```
+<!-- Replace with actual hosted URL -->
+<img src="https://technijian.com/assets/technijian-logo.png" alt="Technijian - technology as a solution" width="200">
+```
+
+Recommended source file: `assets/logos/png/technijian-logo-full-color-600x125.png`
+
+## Personal Outreach (Ravi's voice) — CTA Closing Pattern
+
+**This section governs personal outreach emails (cold and warm-expansion), NOT marketing newsletters or announcements.** Newsletter/announcement templates above are unaffected.
+
+**Encoded after Algro International, 2026-05-28.** When Ravi sends a personal outreach email (biz-dev intro, blueprint follow-up, expansion to an existing client), the closing CTA must:
+
+1. **Route to the Book-a-Meeting button in his signature**, not "reply with a date." The signature already has the button — one click books a slot, zero round-trips.
+2. **Broaden the meeting topic beyond the single client** so it positions Ravi as a cross-client strategist with broader thought leadership.
+
+### Default closing template
+
+> *"I'd love [N] minutes to walk you through it. Use book a meeting in my signature line to setup a time to discuss this and all the [AI Strategies / managed IT / cybersecurity / hosting / topic-relevant work] Technijian is putting into place for itself and its clients."*
+
+Adapt the bracketed clause to match the topic of the email body. Always use lowercase "book a meeting" — Ravi writes it conversationally, not as a proper noun.
+
+### Reference
+
+This is enforced in the global `send-email` skill at `~/.claude/skills/send-email/SKILL.md` (CTA Closing Pattern section). It is also enforced in `technijian-biz-dev-blueprint/SKILL.md` (Phase 11) for outreach following a generated blueprint deliverable.
+
+## Related Skills
+
+- **technijian-brand** — Master brand reference (colors, typography, voice, UI specs). Consult for any values not covered here.
+- **send-email** (global) — Personal-outreach email send pipeline (Aptos format, signature, sender Python script). The CTA Closing Pattern lives there too.
+- **technijian-biz-dev-blueprint** — Generates the AI-Driven Growth Blueprint plus the Executive Summary hook artifact attached on first-touch outreach.

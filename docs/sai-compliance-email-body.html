@@ -1,0 +1,739 @@
+<div style="font-family:'Open Sans','Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; color:#2c2c2c; max-width:700px; line-height:1.6;">
+
+<p>Sai,</p>
+
+<p>I've assigned you 84 compliance tickets across two areas — AFFG (one of our financial services clients) and Technijian itself. Since compliance may be new territory for you, I want to walk through every single ticket so you understand <em>what</em> you're doing, <em>why</em> it matters, and what "done" looks like.</p>
+
+<p>Read through this once fully. These are not optional tasks — they are regulatory and legal obligations. Some have hard deadlines, some are recurring (they repeat every month, quarter, or year), and a few are urgent right now. I've marked the urgency for each one. When you start a ticket, log your time against the portal ticket number shown.</p>
+
+<p>Let's start with the basics.</p>
+
+<hr style="border:none; border-top:2px solid #F67D4B; margin:24px 0;">
+
+<h2 style="color:#F67D4B; font-size:18px; margin-bottom:4px;">What is Compliance?</h2>
+<p>Compliance means following the rules — laws, regulations, and industry standards — that govern how we handle data, respond to security incidents, keep systems running, and protect our clients. When we don't follow these rules, the consequences are serious: government fines, loss of client contracts, lawsuits, and in some cases criminal liability for the company and individuals. Your job is to do the operational work that keeps us <em>provably</em> compliant. "Provably" is the key word — we need documentation and evidence, not just good intentions.</p>
+
+<hr style="border:none; border-top:2px solid #006DB6; margin:24px 0;">
+
+<h1 style="color:#006DB6; font-size:20px;">SECTION A — AFFG (American Fundstars Financial Group)</h1>
+<p>AFFG is a registered investment advisor and broker-dealer regulated by the <strong>SEC</strong> (Securities and Exchange Commission) and <strong>FINRA</strong> (Financial Industry Regulatory Authority). These are government regulators that oversee financial firms that handle investor money. AFFG has to follow rules about protecting customer data, having a disaster recovery plan, and testing that plan regularly. Your 8 AFFG tickets are all <em>recurring operational tasks</em> — the documents themselves are being written by me, but <em>you</em> own the ongoing testing, verification, and upkeep.</p>
+
+<table width="100%" cellpadding="10" cellspacing="0" style="border-collapse:collapse; margin-bottom:16px;">
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top; width:140px;"><strong>AFFG-022</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459336</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual FINRA Contact System Emergency Contact Review</strong><br>
+FINRA requires every broker-dealer to maintain up-to-date emergency contact information in their Contact System (FCS). Think of it as FINRA's way to reach AFFG's leadership immediately during a market emergency or a regulatory crisis. Your job: by the 17th business day after each year-end, log into FINRA's system and verify every emergency contact name, title, phone number, and email is current. If anything has changed — someone left, a number changed — update it immediately and document that you did it.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-023</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459337</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual BCP Test and Tabletop Exercise</strong><br>
+FINRA Rule 4370 says a firm's Business Continuity Plan (BCP) cannot just sit on paper — it has to be tested. A <em>tabletop exercise</em> is a structured meeting where you walk through a disaster scenario (e.g., "our office burned down — what do we do?") and verify that the documented steps actually work. You schedule this exercise with AFFG's team, pick a scenario from their BCP (firm-only outage, building loss, district-wide disruption, city-wide, or regional), lead the walkthrough, document what worked and what didn't, and file the results. The documentation is what satisfies the auditor.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-024</strong><br><span style="font-size:12px; color:#6c757d;">Quarterly · Portal #1459338</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Quarterly Backup Restoration Testing</strong><br>
+AFFG uses backups (Synology NAS + cloud). A backup that has never been tested is worthless — you have no idea if the data is actually restorable until you try. Every quarter, you pick a representative dataset, restore it from backup, confirm the data is intact and uncorrupted, measure how long it took, and document the result. If the restore fails or takes longer than the Recovery Time Objective (RTO) in the BCP, you create a remediation note and test again. This directly satisfies FINRA 4370(c)(1).
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-025</strong><br><span style="font-size:12px; color:#6c757d;">Semi-Annual · Portal #1459339</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Semi-Annual Employee Call Tree and Notification Test</strong><br>
+AFFG's BCP has a call tree — a list of who calls whom during an emergency so every employee gets notified quickly. Every six months, you actually test it: start the chain, track whether every person was reached, how long it took, and whether backup channels (SMS, personal email) worked when primary channels failed. Document results. Update any stale contact info you find. This tests the communication section of FINRA 4370(c)(5).
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-026</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459340</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual Service Provider Oversight Review</strong><br>
+SEC Regulation S-P (2024 amendments) requires AFFG to actively oversee every vendor that touches customer data — AT&amp;T, RingCentral, AWS, Microsoft 365, Synology, and any others. Every year, you: (1) confirm each vendor still has a contractual obligation to notify AFFG within 72 hours of a breach, (2) review their current security posture (check for recent SOC 2 reports, certifications, or security questionnaire responses), and (3) reconcile the vendor inventory to make sure no new vendors were added without oversight. Document everything.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-027</strong><br><span style="font-size:12px; color:#6c757d;">Ongoing · Portal #1459341</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Maintain Reg S-P Compliance Records (5-Year Retention)</strong><br>
+SEC Regulation S-P requires AFFG to keep specific records for five years: written security policies, incident reports, breach notifications sent to customers, and test results. This is an ongoing housekeeping task. You maintain the designated records repository, verify that documents are being filed correctly as events happen (every incident report, every test result, every policy update), and confirm nothing is missing. Think of it as being the custodian of AFFG's compliance filing cabinet — if the SEC walks in tomorrow, these records have to be there and organized.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-028</strong><br><span style="font-size:12px; color:#6c757d;">Annual Review · Portal #1459342</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Maintain Customer BCP Disclosure (Website and Account Opening)</strong><br>
+FINRA 4370(e) requires every broker-dealer to give clients a written summary of their BCP — how the firm will continue to serve them during a disruption. This disclosure must be available at account opening, posted on the firm's website, and mailed on request. Your job: after any material change to the BCP (or at least annually), verify the disclosure on AFFG's website is current, confirm the account-opening packet includes it, and document the review. If the BCP changed, update the disclosure text accordingly.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-029</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459343</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual Reg S-P Incident Response Tabletop</strong><br>
+Similar to AFFG-023, but this exercise is specifically about data breaches. SEC Reg S-P requires firms to be ready to detect, contain, and notify customers within 30 days of a breach involving their sensitive information. Every year, you run a tabletop exercise simulating an unauthorized access scenario (e.g., "a vendor was hacked and customer SSNs may have been exposed"). Walk AFFG's team through: how they'd detect it, who they'd call, how they'd scope who was affected, how they'd draft and send the 30-day notification letter, and how they'd coordinate with their service providers. Document the exercise and any gaps identified.
+</td>
+</tr>
+
+</table>
+
+<hr style="border:none; border-top:2px solid #006DB6; margin:24px 0;">
+
+<h1 style="color:#006DB6; font-size:20px;">SECTION B — Technijian Internal Compliance</h1>
+<p>These 76 tickets are about Technijian's own security posture. We have a Written Information Security Program (WISP), an Incident Response Plan (IRP), a Business Continuity Plan (BCP), and a CMMC readiness program for serving government-adjacent clients. These aren't optional documents — they're the backbone of our ability to win and keep enterprise and regulated clients, and they're required by our cyber insurance policy. Your job is to execute and document the operational work for each.</p>
+
+<h2 style="color:#F67D4B; font-size:16px; margin-top:24px;">B1 — WISP (Written Information Security Program) — Technical Controls</h2>
+<p>The WISP is Technijian's master security policy document. It covers email security, data loss prevention, cloud security, access controls, and more. Most of these tickets are one-time hardening tasks or recurring audits. They map to our key compliance frameworks: <strong>HIPAA</strong> (Health Insurance Portability and Accountability Act — data privacy rules for healthcare clients), <strong>SOC 2</strong> (Service Organization Control 2 — a security audit standard enterprise clients require from their IT vendors), <strong>PCI-DSS</strong> (Payment Card Industry Data Security Standard — rules for any system that touches credit card data), and <strong>GDPR</strong> (General Data Protection Regulation — the EU's data privacy law that applies when we handle data for European individuals).</p>
+
+<table width="100%" cellpadding="10" cellspacing="0" style="border-collapse:collapse; margin-bottom:16px;">
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top; width:140px;"><strong>WISP-001</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459229</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Deploy SPF Records for All Domains</strong><br>
+SPF (Sender Policy Framework) is a DNS record that tells the world which mail servers are authorized to send email from our domain. Without it, spammers can send email that looks like it came from @technijian.com — this is called email spoofing. Publish SPF TXT records in DNS for every Technijian domain with a <code>-all</code> hard-fail policy. Verify using MXToolbox. Document all authorized senders (M365, marketing platforms, ticketing system). Verify annually that it's still accurate.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-002</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual key rotation · Portal #1459231</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Configure DKIM Signing for Outbound Email</strong><br>
+DKIM (DomainKeys Identified Mail) adds a cryptographic signature to every outbound email so the receiving server can verify the email truly came from us and wasn't tampered with in transit. Enable DKIM in Microsoft 365 for all sending domains. Generate 2048-bit DKIM keys, publish the CNAME records in DNS, verify signatures are active by examining email headers. Rotate keys annually.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-003</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Monthly · Portal #1459232</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Implement DMARC Policy at Reject</strong><br>
+DMARC (Domain-based Message Authentication) sits on top of SPF and DKIM. It tells receiving servers what to do when an email fails those checks — nothing (p=none), quarantine it, or reject it outright. Start at p=none so you can see what's happening via aggregate reports (rua) without breaking anything, advance to p=quarantine after 30 days, then p=reject after 60. Monitor the weekly DMARC reports — they'll show you if any legitimate senders are failing authentication that you need to fix first.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-004</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459233</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Deploy Email Security Gateway Controls</strong><br>
+Configure our inbound email security gateway (Inky or equivalent) with: anti-spam and anti-malware scanning, URL rewriting (so every link in email is checked at click-time, not just at receipt), sandbox analysis of executable attachments and macro-enabled Office files, detection of display-name spoofing (e.g., an email that shows "Ravi Jain" but comes from a Gmail account), and external sender banners so staff know when email comes from outside Technijian. Tune the rules quarterly based on what's being caught and missed.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-005</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459234</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Implement BEC Prevention Controls</strong><br>
+Business Email Compromise (BEC) is one of the most expensive cyber crimes — attackers impersonate executives or vendors to trick staff into wiring money or changing payment details. Configure: a phone-verification rule (before any wire transfer or payment detail change, staff must call the requester on a known phone number — never reply to the email), executive impersonation detection rules in the email gateway, and BEC-specific scenarios in our phishing simulations. Distribute the written verification procedure to everyone who handles financial transactions. Test quarterly.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-006</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459235</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Configure Microsoft 365 DLP Policies</strong><br>
+Data Loss Prevention (DLP) policies detect and block sensitive data from leaving the organization. Create DLP policies in M365 covering Exchange, SharePoint, OneDrive, and Teams. Configure rules to detect SSNs (Social Security Numbers), credit card numbers, and other restricted data patterns. Set up policy tips that warn users before they send something they shouldn't, and blocking actions for high-confidence matches. Route violations to the Security Officer for review. Tune quarterly as patterns evolve.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-007</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459236</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Deploy Endpoint DLP for Removable Media</strong><br>
+Even if email DLP is perfect, an employee could still plug in a USB drive and copy sensitive client files. Configure endpoint DLP agents to monitor file transfers to USB and external storage. Block transfers that match restricted data patterns. Allow exceptions only with documented Security Officer approval. Generate alerts for every blocked transfer so we know what people are attempting.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-008</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459237</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Harden Microsoft 365 Tenant per CIS Benchmark</strong><br>
+The CIS (Center for Internet Security) Microsoft 365 Foundations Benchmark is a published, vendor-neutral checklist of security settings that should be enabled in every M365 tenant. CIS is an independent nonprofit that publishes these hardening guides — they are the industry standard used by auditors and security teams worldwide. Audit our tenant against it. Critical items: no more than 4 global admin accounts (each dedicated, not used for daily work), unified audit logging enabled for all services, legacy authentication disabled (old protocols like Basic Auth that can't do MFA), external sharing restricted, Azure AD security defaults or equivalent Conditional Access enabled, guest access reviewed and restricted. Document each item — pass or needs fixing.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-009</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459238</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Implement Conditional Access Policies</strong><br>
+Conditional Access is Azure AD's "if this then that" for login decisions. Configure policies to: require MFA for every user, block legacy authentication protocols, require compliant devices (Intune-enrolled) for access to sensitive data, restrict access from untrusted countries/IPs, and enforce session timeouts. Test everything in report-only mode first so you don't lock anyone out, then enforce. Review quarterly.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-010</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459239</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Shadow IT Discovery and Blocking</strong><br>
+Shadow IT is cloud services employees use without IT's knowledge or approval — personal Dropbox, ChatGPT accounts, random SaaS tools. If client data ends up in an unsanctioned app, we have a breach. Deploy Microsoft Cloud App Security (or equivalent) to discover what apps are actually being used. Review the list. Block high-risk or unsanctioned apps via our firewall or proxy. Create a process for employees to request new cloud services through IT. Communicate the approved app list to all staff.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-011</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Monthly · Portal #1459240</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Microsoft 365 Third-Party Backup Solution</strong><br>
+Microsoft does not guarantee recovery of deleted M365 data beyond short retention windows. If an admin accidentally deletes a mailbox or SharePoint site and we don't have a third-party backup, that data is gone. Evaluate and deploy a third-party M365 backup solution (e.g., Veeam Backup for M365, Datto SaaS Protection). Cover Exchange, SharePoint, OneDrive, and Teams. Configure backup schedules aligned with our RPO targets. Verify restore capabilities monthly with test restores.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-012</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459241</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Review and Update Cyber Insurance Policy</strong><br>
+Our current cyber insurance policy is Tokyo Marine HCC #H25TG32029-04. Review it annually with our broker. Confirm coverage limits are appropriate for our current revenue, client count, and data volumes. Verify it covers: breach response costs, business interruption, ransomware/extortion payments, regulatory defense, and third-party liability. Document a coverage summary and share it with the Incident Response Team so they know what's available if something happens.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-015</strong><br><span style="font-size:12px; color:#6c757d;">Monthly · Portal #1459244</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Build Security Metrics Dashboard</strong><br>
+We can't manage what we don't measure. Build a monthly dashboard tracking: patch compliance rate (what % of systems are fully patched?), MFA adoption rate, EDR coverage (what % of endpoints have CrowdStrike?), phishing simulation click rate, mean time to detect/respond to incidents, backup success rate, vulnerability remediation within SLA, access review completion, training completion, and overdue risk items. Automate data collection where possible. Distribute to me every month.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-016</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459245</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Conduct Annual Risk Assessment</strong><br>
+A formal risk assessment is required by almost every compliance framework. The process: (1) inventory all information assets (servers, laptops, cloud services, data), (2) identify threats to each asset (ransomware, insider theft, natural disaster), (3) assess how likely each threat is and how badly it would hurt us, (4) calculate a risk rating for each, (5) choose a treatment strategy (accept, mitigate, transfer, avoid). Update the risk register with findings. Present to me for review and approval. Retain the documentation for 3 years.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-017</strong><br><span style="font-size:12px; color:#6c757d;">Quarterly · Portal #1459246</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Quarterly Access Reviews</strong><br>
+People change roles, leave the company, or accumulate permissions they no longer need. Every quarter, generate access reports for all systems — Active Directory, M365, cloud services, client environments, VPN, RMM, and PSA. Have each manager confirm or revoke access for their direct reports. Review privileged accounts yourself as Security Officer. Revoke excess permissions within 5 business days of the review. Document the review with sign-offs and retain for 3 years. This prevents the "ex-employee still has access" problem that causes data breaches.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-018</strong><br><span style="font-size:12px; color:#6c757d;">Quarterly · Portal #1459247</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Quarterly Phishing Simulations</strong><br>
+The most common way attackers get in is by tricking an employee into clicking a malicious link or opening an attachment. Phishing simulations are fake attacks we run against our own staff to measure susceptibility and train people before a real attack happens. Every quarter, design and send a simulated phishing campaign targeting all Technijian staff. Vary the scenario (credential harvesting, malware attachment, BEC, fake urgent request). Track who clicked, who reported it. Deliver additional training to those who fell for it. Escalate repeat failures to management. Report results in the security metrics dashboard.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-019</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459248</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual Security Awareness Training</strong><br>
+Every employee must complete annual security training. Develop and deliver a refresher covering: current threat landscape, policy updates, phishing/social engineering, data classification rules, incident reporting procedures, password hygiene, and physical security. Track completion in the HR system. We need 100% completion within 30 days of launch. If someone doesn't complete it, escalate to their manager.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-020</strong><br><span style="font-size:12px; color:#6c757d;">Monthly · Portal #1459249</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Monthly Vulnerability Scans — Internal and External</strong><br>
+Vulnerability scanners (like Nessus or Qualys) check all our systems for known security weaknesses — unpatched software, misconfigured services, exposed admin ports. Run internal and external scans monthly. Prioritize findings by severity: Critical (fix within 72 hours), High (7 days), Medium (30 days), Low (90 days). Track remediation to completion. For anything you can't fix within the window, document an exception with compensating controls and get Security Officer approval.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-021</strong><br><span style="font-size:12px; color:#6c757d;">Annual (coordination) · Portal #1459250</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual Penetration Test</strong><br>
+A penetration test (pen test) is a simulated cyberattack conducted by a qualified outside firm. Unlike a vulnerability scan (automated), a pen test has real humans trying to break in — testing our external-facing systems, internal network, and critical applications. Your job: coordinate with the third-party firm (scheduling, scoping, rules of engagement), ensure Critical and High findings are remediated within defined SLAs, arrange a retest to confirm fixes, and retain the report for audit purposes (3 years).
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-022</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459251</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual Vendor Risk Reassessment</strong><br>
+Every vendor with access to restricted or confidential data — or that provides critical infrastructure — gets a formal annual security review. This means: sending them a security questionnaire, reviewing their latest SOC 2 Type II report (if they have one), verifying our contracts with them still include the required security clauses, and documenting findings. If a critical vendor has degraded security posture, escalate to me immediately.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-023</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459252</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Review TPX SOC 2 Type II Report (Primary SOC 2 Compliance)</strong><br>
+TPX Communications is our primary data center provider. Their SOC 2 Type II report is our main evidence of data center security compliance — it covers the controls TPX operates on our behalf. Obtain their latest report annually. Read the full report including: auditor opinion (did they pass?), control descriptions, test results, and any exceptions or deficiencies. Map all "Complementary User Entity Controls" (CUECs) — those are things TPX expects US to do on our end for their controls to work. Verify each CUEC is implemented by Technijian. Prepare a reliance summary for clients who ask about our SOC 2 posture.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-024</strong><br><span style="font-size:12px; color:#6c757d;">Quarterly · Portal #1459253</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Quarterly Firewall Rule Review</strong><br>
+Firewall rules accumulate over time — temporary rules for a project that never got removed, overly broad "allow all" rules someone added in a hurry, rules for systems that no longer exist. Every quarter, review all firewall rule sets. Remove stale or unnecessary rules. Verify every rule aligns with current network architecture and client segmentation requirements. Document the review with date, reviewer, and changes made. The principle is deny-by-default — if there's no business reason for a rule, delete it.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-025</strong><br><span style="font-size:12px; color:#6c757d;">Weekly · Portal #1459254</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Weekly Privileged Account Log Review</strong><br>
+Privileged accounts — domain admins, firewall admins, database superusers — can do enormous damage if compromised or misused. Every week, review audit logs for privileged account activity on high-risk systems: domain controllers, firewalls, client production systems. Look for: unusual login times, failed authentication attempts, unauthorized configuration changes, unexpected data access. If something looks suspicious, escalate per our IRP immediately. Document that you completed the review each week.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-026</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459275</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual Internal Security Audit</strong><br>
+Once a year, conduct a comprehensive internal review of all security controls across every section of the WISP: access controls, data protection, network security, email security, DLP, cloud security, vendor management, HR security, physical security, change management, and incident response readiness. Document every finding with a severity rating, remediation action, responsible owner, and target date. Track remediation to completion. This is different from the external pen test — this is our own internal self-assessment.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-027</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459276</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual SOC 2 Reliance Review and CUEC Verification</strong><br>
+This is the detailed companion to WISP-023. Once you have the TPX SOC 2 report, extract every CUEC and map it to a specific Technijian control. For each CUEC, gather evidence that we actually implement it (screenshots, policies, config exports). Document the evidence in a matrix. Remediate any gaps within 30 days. Prepare a SOC 2 reliance summary that sales can share with enterprise clients who ask "how does Technijian demonstrate SOC 2 compliance?"
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-028</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459277</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Collect Personal Phone Numbers for Key Personnel</strong><br>
+If our corporate systems go down during an incident, we need to reach the response team through personal channels. Collect personal cell numbers and personal email addresses for: Rishad Mohamed, Sai Revanth (you), Alex Alcantar, and Aditya Saraf. Update IRP Appendix B and BCP Appendix B with this information. The target is being able to reach every IRT member within 30 minutes even if all corporate systems are offline. Verify quarterly that numbers are still current.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-029</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459278</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Data Retention and Destruction Compliance Review</strong><br>
+We have a retention schedule in the WISP — different data types have different required retention periods (e.g., financial records: 7 years, HR records: varies by type, client data: per contract). This annual task: audit current storage against the schedule, identify data that has exceeded its retention period, execute secure destruction using NIST SP 800-88 methods (overwrite, degauss, or physical destruction depending on media type), obtain certificates of destruction from vendors if applicable, and log all destruction activities. Also verify no restricted data is sitting on personal devices.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-030</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Ongoing · Portal #1459279</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Implement Password Vault for Privileged Accounts</strong><br>
+We should not have privileged account passwords written on sticky notes, stored in LastPass personal accounts, or reused across systems. Deploy a password vault solution (e.g., CyberArk, HashiCorp Vault, 1Password Teams) for all privileged accounts. Each account gets a unique, complex password. Configure automated password rotation. Restrict vault access to authorized personnel only. Enable audit logging for every vault access. Build a complete inventory of all privileged accounts and onboard them.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-031</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459280</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Build and Maintain IT Asset Inventory</strong><br>
+You cannot secure what you don't know exists. Build a comprehensive inventory of every information asset: all hardware (servers, workstations, laptops, network gear, mobile devices), all software (OS, applications, SaaS, licenses), all data stores (databases, file shares, cloud storage), all network assets (firewalls, switches, APs), all cloud services, and all client environments we manage. For each asset, track: owner, location, classification, and patch status. Implement network-based unauthorized asset detection. Review quarterly and reconcile annually.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-032</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459281</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Harden Wireless Network Security</strong><br>
+Audit all wireless networks at Technijian office and client sites. Minimum standard: WPA3 or WPA2-Enterprise. For corporate SSIDs, configure 802.1X authentication against Active Directory / Azure AD so that only domain-enrolled devices can join. Isolate guest Wi-Fi on its own VLAN with internet-only access (no access to internal systems). Disable SSID broadcast for corporate networks where feasible. Deploy rogue access-point detection. Document wireless security standards for client site deployments so the entire tech team applies them consistently.
+</td>
+</tr>
+
+</table>
+
+<h2 style="color:#F67D4B; font-size:16px; margin-top:24px;">B2 — IRP (Incident Response Plan) — Technical Implementation</h2>
+<p>When a cyberattack happens, we have to respond fast and in the right order. The IRP defines exactly how. These tickets build and maintain the tools and capabilities that make our incident response real, not just theoretical.</p>
+
+<table width="100%" cellpadding="10" cellspacing="0" style="border-collapse:collapse; margin-bottom:16px;">
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top; width:140px;"><strong>IRP-001</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Ongoing · Portal #1459255</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Deploy Huntress SIEM Platform</strong><br>
+A SIEM (Security Information and Event Management) platform ingests logs from every system and uses rules to detect suspicious activity automatically — like an intrusion alarm system for our entire IT environment. We've selected Huntress SIEM. Deploy it, configure log ingestion from: firewalls, CrowdStrike EDR, Windows Event Logs, Active Directory / Azure AD, VPN, cloud platforms, email gateway, DNS, and application logs. Tune the detection rules to reduce false positives. Set up an alert triage workflow so the right person gets notified when something fires. Train the SOC analysts.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>IRP-002</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459256</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Develop Incident Response Playbooks</strong><br>
+A playbook is a step-by-step procedure for handling a specific type of incident. Without playbooks, people freeze or improvise under pressure — and mistakes happen. Create detailed playbooks for each incident type: Ransomware, Phishing/BEC, Insider Threat, Client Data Breach, Third-Party Compromise, Lost/Stolen Device, and Denial of Service. Each playbook needs: detection indicators (how do we know this is happening?), containment steps, evidence preservation instructions, eradication steps, recovery steps, communication templates, and regulatory notification checklists. Review annually.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>IRP-003</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459257</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Conduct Annual IRP Tabletop Exercise</strong><br>
+Same concept as AFFG-023 but for Technijian's own incident response. Gather the full Incident Response Team (IRT) and run a tabletop. Pick a scenario from the rotation list: ransomware hitting our production environment, a client data breach, an insider threat case, or a third-party compromise. A facilitator presents the scenario in stages with "injects" (unexpected complications) and the team walks through their decisions, communications, and notification obligations. Document gaps and improvement actions after each exercise.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>IRP-004</strong><br><span style="font-size:12px; color:#6c757d;">Quarterly · Portal #1459258</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Quarterly Emergency Contact Verification</strong><br>
+The IRP and BCP both have emergency contact lists in their appendices. These go stale fast — people change phones, leave the company, change roles. Every quarter, actually call every number on the lists and confirm it reaches the right person. Verify personal email addresses too. Update any changed information immediately. Document the verification date and results. This sounds simple, but during an actual incident at 2am, unreachable emergency contacts can cripple our response.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>IRP-005</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459259</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Establish Forensics Retainer Agreement</strong><br>
+During a serious incident (ransomware, data breach), we need digital forensics expertise immediately — people who can preserve evidence, trace the attacker's path, and produce documentation for regulators and insurers. We've identified Salvage Data (or an equivalent forensics firm). Establish a pre-paid retainer agreement that defines scope of services, response time SLAs (how fast they'll respond), hourly rates, and evidence handling procedures. Having a retainer means we can engage them immediately during an incident without wasting time on contract negotiations.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>IRP-006</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Ongoing · Portal #1459260</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Subscribe to Threat Intelligence Feeds</strong><br>
+Threat intelligence feeds give us early warning about new attacks, vulnerabilities, and threat actors targeting our industry. Subscribe to: CISA (Cybersecurity and Infrastructure Security Agency) alerts, MS-ISAC (Multi-State Information Sharing and Analysis Center) advisories, and CompTIA ISAO (or an MSP-focused equivalent). Configure automated delivery to the Security Officer. Establish a process to evaluate each advisory for applicability to our environment and update detection rules or patching priorities accordingly.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>IRP-007</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Continuous · Portal #1459261</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Configure Dark Web Monitoring</strong><br>
+When attackers steal credentials or data, they often sell or post it on dark web forums. Dark web monitoring services watch for mentions of our domains, email addresses, and key personnel in those places. Deploy or subscribe to a monitoring service covering Technijian and client domains. Configure alerting. Establish a response process: if credentials are found, immediately force a password reset for the affected account and investigate whether a breach occurred. If data appears, treat it as a potential incident.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>IRP-008</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459262</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual IRP Plan Review and Update</strong><br>
+The IRP needs to reflect current reality — current staff, current systems, current threats, and lessons learned from real incidents and tabletop exercises. Conduct the annual review: verify all contact information, update procedures based on lessons learned, incorporate any regulatory changes, update technology and vendor references. Get Security Officer and CEO sign-off. Distribute the updated plan to all IRT members so everyone is working from the same version.
+</td>
+</tr>
+
+</table>
+
+<h2 style="color:#F67D4B; font-size:16px; margin-top:24px;">B3 — BCP (Business Continuity Plan) — Testing and Operations</h2>
+<p>The BCP is our plan to keep Technijian operating — or recover quickly — when something bad happens: a ransomware attack, a data center fire, a pandemic, or a critical vendor going down. A BCP that's never been tested is just a document. Your job is to make sure ours actually works.</p>
+
+<table width="100%" cellpadding="10" cellspacing="0" style="border-collapse:collapse; margin-bottom:16px;">
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top; width:140px;"><strong>BCP-001</strong><br><span style="font-size:12px; color:#6c757d;">Semi-Annual · Portal #1459263</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Conduct Semi-Annual BCP Tabletop Exercise</strong><br>
+Every six months, gather the BC team and run a tabletop exercise for a different disruption scenario: data center failure, cyberattack, facility loss (office is unavailable), pandemic (reduced staffing), or vendor outage. Walk through: what triggers plan activation, who makes the decision, how we communicate, what the recovery steps are. Document gaps — anything where the documented steps turned out to be unclear, wrong, or missing — with owners and target dates for fixing them.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>BCP-002</strong><br><span style="font-size:12px; color:#6c757d;">Quarterly · Portal #1459264</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Quarterly Communication Test (Phone Tree)</strong><br>
+Test the emergency notification chain: phone tree, email cascade, and backup messaging apps. The target: all BC team members and IRT members reached within 30 minutes. Test alternate channels too (personal phones, personal email) since corporate systems may be down during a real emergency. Document results and update any stale contact information immediately.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>BCP-003</strong><br><span style="font-size:12px; color:#6c757d;">Monthly · Portal #1459265</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Monthly File-Level Backup Restoration Test</strong><br>
+Every month, restore individual files from each backup tier (we have three tiers with different retention periods). Confirm the files are intact, the content is correct, and the restore worked cleanly. Measure how long it took. Document: date, tester name, systems tested, recovery time, whether data integrity passed, and any issues found. If a restore fails, remediate within 30 days and retest.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>BCP-004</strong><br><span style="font-size:12px; color:#6c757d;">Quarterly · Portal #1459266</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Quarterly System-Level Backup Restoration Test</strong><br>
+A level up from BCP-003: every quarter, restore a complete Tier 1 system (a full server, not just files) to an isolated test environment. Verify the system boots, all applications function correctly, and data is intact. Measure actual recovery time and compare it against the Recovery Time Objective (RTO) target in the BCP. If actual recovery takes longer than the RTO, that's a gap that needs to be addressed.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>BCP-005</strong><br><span style="font-size:12px; color:#6c757d;">Semi-Annual · Portal #1459267</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Semi-Annual Bare-Metal Recovery Test</strong><br>
+The most comprehensive restoration test: start from completely bare hardware (no OS, no data) and recover a production system fully from backup. Measure recovery time against the RTO target. Verify application functionality and data integrity post-recovery. Document everything, including any deviations from expected recovery time. This test proves our backups can actually save us in the worst case.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>BCP-006</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459268</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual Full DR Drill</strong><br>
+Once a year, simulate a major disaster and execute a full recovery. This means: failing over representative Tier 1 and Tier 2 systems to the DR environment, measuring actual RTO and RPO against targets for each tier, testing client connectivity to the DR environment, then executing failback to production. This is the most disruptive test but the most valuable — it's the one that proves everything works end-to-end. Document comprehensive results and all improvement actions.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>BCP-007</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459269</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual BCP Plan Review and Update</strong><br>
+The BCP needs to stay current. Every year: validate that RTO/RPO targets are still appropriate for our current business, verify recovery strategies are technically feasible with current infrastructure, update all contact information, vendor information, and backup architecture details, and validate communication templates. Get Security Officer and CEO sign-off before distributing the updated plan.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>BCP-008</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459270</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual BCP Awareness Training</strong><br>
+Every staff member should understand the basics: what the BCP is, their individual role during a disruption, how to communicate during an emergency, what remote work expectations are, and how to report a disruption. Develop and deliver this training annually. For BC team members, include additional role-specific content. Track completion and retain records for 3 years.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>BCP-009</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459271</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Verify Emergency Operating Reserve</strong><br>
+The BCP requires Technijian to maintain an emergency operating reserve of at least 90 days of operating expenses in accessible accounts. Every year, confirm the reserve is intact, verify the amount covers current operating costs (they change as we grow), and confirm auto-pay is configured for critical vendor payments and payroll so we can continue paying people even if access to normal banking channels is disrupted.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>BCP-010</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Weekly · Portal #1459272</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Configure Backup Monitoring and Alerting</strong><br>
+We shouldn't discover a backup has been failing for three weeks when we need it most. Configure 24/7 automated monitoring for all backup jobs across all tiers. Set alerts for: failed or incomplete backups, storage capacity approaching limits, and replication lag exceeding RPO. The remediation SLA is 4 hours for failed jobs, Security Officer notification at 8 hours. Generate and review weekly backup status reports so you catch trends before they become crises.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>BCP-011</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459273</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Pandemic Staffing Drill</strong><br>
+The BCP has a section on operating with significantly reduced staffing — e.g., if 60% of the team is sick or unable to work. Simulate this scenario annually. Run minimum viable operations across: client monitoring, helpdesk, security operations, and management. Verify that vendor augmentation contacts are current (staff we could bring in on short notice) and that the documented procedures for reduced staffing are workable. Document gaps.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>BCP-012</strong><br><span style="font-size:12px; color:#6c757d;">Annual · Portal #1459274</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual Cyber Insurance Policy Review and Renewal</strong><br>
+This aligns with WISP-012 but specifically as part of our BCP financial continuity planning. Before renewal, review coverage with our broker. Update based on changes in revenue, client count, data volumes, and findings from the annual risk assessment. Confirm coverage reflects current threats (ransomware, BEC, supply chain attacks). Distribute the updated coverage summary to all IRT members so they know exactly what our insurer covers and what the claim procedures are.
+</td>
+</tr>
+
+</table>
+
+<h2 style="color:#F67D4B; font-size:16px; margin-top:24px;">B4 — CMMC / NIST 800-171 — Technical Implementation</h2>
+<p>CMMC (Cybersecurity Maturity Model Certification) and NIST SP 800-171 are federal standards for protecting Controlled Unclassified Information (CUI) — sensitive government data. We are pursuing DoD-adjacent work, which means clients working with the Department of Defense. To serve those clients, we need to demonstrate we can handle their security posture without putting their CUI at risk. Critically: Technijian does <strong>not</strong> store, process, or transmit CUI on our own systems. Our model is ciphertext-only — encrypted backups where the client holds the key and we physically cannot decrypt the data. Every tool we use must preserve that architecture.</p>
+
+<table width="100%" cellpadding="10" cellspacing="0" style="border-collapse:collapse; margin-bottom:16px;">
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top; width:140px;"><strong>CMMC-002</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459284</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Conduct NIST 800-171 Self-Assessment and Calculate SPRS Score</strong><br>
+NIST SP 800-171 has 110 security requirements. The SPRS (Supplier Performance Risk System) score is how the DoD measures how well a contractor implements those 110 controls — starting at 110, with points deducted for unimplemented controls. You perform the self-assessment using the DoD Assessment Methodology: for each of the 110 controls, determine met or not met, document evidence, and apply the weighted scoring. The resulting SPRS score gets submitted to the DoD. Re-score after any material remediation.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-006</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459288</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Register as RPO and Certify Staff (RP/CCP)</strong><br>
+A Registered Provider Organization (RPO) is a company recognized by the Cyber AB (the CMMC accreditation body) as having verifiable CMMC competency. Registering as an RPO gives us credibility with DoD clients without claiming we are C3PAO-certified (which we are not). Enroll at least two staff members as Registered Practitioners (RP) or Certified CMMC Professionals (CCP). Maintain the credentials and directory listing so clients can verify our status.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-007</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Per engagement · Portal #1459289</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Establish CUI Asset Scoping Methodology and Diagrams</strong><br>
+Before we can manage a DoD client's CMMC scope, we need a repeatable process for mapping which assets in their environment fall into which CMMC scoping buckets: CUI Assets (handle the sensitive data directly), Security Protection Assets (like our RMM — they protect CUI systems), Contractor Risk Managed Assets (we manage the risk but they don't touch CUI), Specialized Assets, and Out-of-Scope. Create template network diagrams and data-flow diagrams that we use at client onboarding to define and document the boundary. This prevents scope creep and protects both us and the client.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-008</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Maintain · Portal #1459290</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Establish GCC High Capability and Reference CUI Enclave Architecture</strong><br>
+GCC High is the Microsoft 365 government cloud environment specifically designed to hold CUI. Regular M365 Commercial cannot legally store CUI under <strong>DFARS 252.204-7012</strong> (DFARS stands for Defense Federal Acquisition Regulation Supplement — the set of federal contracting rules that DoD contractors must follow; clause 7012 specifically covers cybersecurity requirements and cloud service standards). Establish our Microsoft partner capability to provision and administer GCC High tenants. Design a reference CUI enclave architecture: segmented tenant and network, conditional access policies, FIPS-validated encryption (FIPS = Federal Information Processing Standard — federally-certified cryptography, covered in detail under CMMC-009), scoped admin access so only authorized personnel touch CUI systems. Document the migration path from Commercial M365 to GCC High for clients who need it.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-009</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459291</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Implement and Document FIPS 140-2/3 Validated Cryptography</strong><br>
+<strong>FIPS 140-2/3</strong> (Federal Information Processing Standard — a federal government standard that certifies cryptographic modules are properly implemented and secure) is the required encryption standard when CUI is involved. Only encryption modules that have been tested and validated under FIPS are acceptable — not just any encryption, and not just "AES-256" in general, but specifically a module with an active CMVP (Cryptographic Module Validation Program) certificate. Verify and document that all cryptography protecting CUI uses FIPS-validated modules: enable BitLocker FIPS mode on CUI-handling endpoints, confirm FIPS-validated VPN/TLS for transmission, record the CMVP certificate numbers. Build an inventory of validated modules.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-010</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Maintain · Portal #1459292</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Implement DFARS 7012 Cyber Incident Reporting Capability</strong><br>
+DFARS 252.204-7012 requires DoD contractors to report cyber incidents within 72 hours via DIBNet (the DoD's contractor portal). Build this capability: obtain a DoD-approved medium-assurance (ECA) digital certificate for submitting reports, document the reporting procedure in our IRP, implement 90-day media and forensic image preservation (you can't delete evidence), and establish the process for submitting malware samples to the DoD Cyber Crime Center (DC3). Add a DFARS 7012 reporting checklist to our incident playbooks so responders know exactly what's required.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-011</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459293</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Implement Non-Local Maintenance Controls for Remote Administration</strong><br>
+When we remotely administer client systems (via RMM, ScreenConnect, etc.), NIST 800-171 requires specific controls: MFA for every remote session (not just for login to our systems — for every remote maintenance connection), session audit logging and recording, session termination upon completion (no persistent sessions), and an approval workflow before remote maintenance begins. Verify our RMM and remote-control tooling enforce all of these. Document the controls. Review quarterly.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-012</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459294</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Establish Configuration Baselines and Application Allow-Listing</strong><br>
+A configuration baseline is a documented "known good" state for a system type — specific OS settings, enabled/disabled features, required patches, firewall rules. Application allow-listing means only approved applications can execute — anything else is blocked by default. This is one of the most effective controls against malware. Define baselines for CUI-scope systems and enforce them. Implement application allow-listing on CUI-handling endpoints. Control user-installed software. Track any deviations from baseline. Review quarterly.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-013</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459295</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Formalize Audit Log Retention and Protection</strong><br>
+For CMMC CUI systems, we need audit logs that cover: who did what, when, on which system. Document the required log retention period, synchronize system clocks to an authoritative time source (so logs are timestamped correctly), protect audit logs from unauthorized modification or deletion (attackers often delete logs to cover their tracks), and establish a regular log review and alerting cadence in Huntress SIEM. Map each requirement to the NIST 800-171 Audit and Accountability (AU) family controls.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-014</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Per hire · Portal #1459296</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Implement US-Persons / CUI-Access Personnel Screening</strong><br>
+Staff who access CUI environments need personnel security controls. Before granting CUI access, screen individuals (background check, verification of eligibility). For export-controlled CUI (ITAR — International Traffic in Arms Regulations), document US-person status, as some CUI can only be handled by US citizens or permanent residents. Ensure procedures exist for protecting CUI during personnel actions: when someone transfers roles or leaves Technijian, their CUI access is revoked immediately and handled appropriately. Extend our existing HR background-screening process (WISP Section 15.1) with these requirements.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-015</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459297</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Assess Tool Stack for CMMC/FedRAMP Suitability</strong><br>
+Every tool that touches a CUI environment — RMM, SIEM, backup, remote control, documentation, ticketing — needs to be either FedRAMP-authorized or GCC High-compatible. Review our entire tool stack. For each tool determine: can it operate inside the CUI enclave, or must it be scoped out? Document findings for each tool. Select compliant alternatives where gaps exist. This protects our architecture and our clients — and it's what a C3PAO assessor will verify.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-017</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459299</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Develop CUI-Specific Security Awareness Training</strong><br>
+General security awareness (WISP-019) is not enough for staff who work near DoD client environments. Create a specific training module covering: what CUI is and how to identify it, CUI marking requirements (documents have to be labeled), proper handling procedures, incident reporting requirements specific to CUI, and the consequences of CUI mishandling (which can include federal criminal charges). Deliver this to all staff who may access DoD client environments. Track completion. Supplement the annual security awareness training.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-018</strong><br><span style="font-size:12px; color:#6c757d;">Strategic (one-time) · Portal #1459300</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Pursue Technijian CMMC Level 2 Certification (Strategic)</strong><br>
+This is a longer-term strategic decision, gated on our DoD client pipeline volume. If we pursue it, engage an authorized C3PAO (Certified Third-Party Assessment Organization) to formally assess Technijian for CMMC Level 2. Prerequisites: the SSP, SPRS score, and POA&amp;M must all be complete with all 110 controls implemented. Budget 6–12 months and significant certification costs. I will make the go/no-go decision based on how the DoD pipeline develops — your job for now is to build and maintain all the prerequisites.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-020</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459302</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Stand Up Segregated CMMC Management Plane and Entra Groups</strong><br>
+Our CMMC client management must be completely separate from our commercial book of business. Set up: a dedicated ScreenConnect session-group scope for CMMC clients, a separate or scoped ManageEngine Endpoint Central instance, and dedicated admin workstations. Create least-privilege Azure AD (Entra) security groups: CMMC-ScreenConnect-Operators, CMMC-EC-Technicians, and CMMC-Backup-Admins — these gate who can touch CMMC client environments. Document the separation architecture. Review quarterly.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-022</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Per client · Portal #1459304</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>NAKIVO FIPS-Validated Backup Encryption with Client-Held Key</strong><br>
+This is the heart of our ciphertext-only architecture. When backing up CUI client data with NAKIVO, encryption must happen using a FIPS 140-2/3 validated module before the data reaches Technijian storage, and the client must hold the encryption key — not us. Choose Path A (encrypt upstream with client key so NAKIVO moves only ciphertext) or Path B (run NAKIVO on an OS in FIPS mode). Enable source-side encryption in NAKIVO. Confirm that Technijian's key management system does not hold the client key and that we genuinely cannot decrypt the backup data.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-023</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459305</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Configure QNAP/Nimbus Storage as Ciphertext-Only Store</strong><br>
+Our QNAP/Nimbus storage target should be a dumb repository for already-encrypted blobs — it stores the ciphertext and nothing more. Do not rely on QNAP's built-in encryption for the FIPS compliance claim (its modules likely don't have an active CMVP certificate, and device-managed keys would mean Technijian could decrypt the data and fall into full CUI scope). Confirm the configuration ensures that even with full access to the storage hardware, Technijian cannot read any client CUI backup data.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-024</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459306</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Verify Backup CMVP Module and Test Ciphertext-Only Restore</strong><br>
+Look up the exact cryptographic module performing backup encryption on the NIST CMVP validated-modules list at csrc.nist.gov. Confirm the certificate is active (not Historical). Record the certificate number. Then test a full client-keyed restore end to end — verify that without the client-held key, the backed-up data is completely unrecoverable. Produce a one-page backup data-flow and key-custody diagram (source → FIPS encryption → transfer → ciphertext storage → restore) for inclusion in each client's SSP and our Customer Responsibility Matrix.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-025</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459307</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Enable Windows FIPS Mode on Self-Hosted ScreenConnect</strong><br>
+ScreenConnect (ConnectWise Control) is self-hosted on a Windows server inside our boundary. Windows has a FIPS mode setting that forces all cryptographic operations to use FIPS-validated modules — specifically Microsoft's Schannel, which is CMVP-validated. Enable FIPS mode on the ScreenConnect server. Enable it on managed endpoints where feasible. Verify which version of Schannel is active and confirm its CMVP certificate number and status. Document everything for the CMVP register (CMMC-029).
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-026</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459308</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Harden ScreenConnect Access Logging and Sessions</strong><br>
+For CMMC client environments, our remote access tool (ScreenConnect) must meet strict requirements. Enforce: Azure AD SSO with MFA via Conditional Access for all operators, restricted to the CMMC-ScreenConnect-Operators group only. Scope each operator to only the session groups they need — no one gets access to everything. Unique named accounts, no shared logins. Enable full session audit logging and recording with a defined retention period. Configure idle session timeout/lock. Add a consent banner that appears at connection time.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-027</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459309</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>ManageEngine EC On-Prem FIPS Mode and Server Hardening</strong><br>
+ManageEngine Endpoint Central (our patch management system) is deployed on-premises within our boundary. Security Protection Data — patch status, inventory, configuration data — stays internal rather than in a non-FedRAMP cloud. Enable Endpoint Central's FIPS compliance mode, which forces HTTPS and removes non-compliant algorithms. Verify the underlying cryptographic module against CMVP. Harden the EC server itself as a high-value Security Protection Asset: restrict console network access, keep the server patched, limit admin count, enable audit logging.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-028</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459310</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>ManageEngine EC Least-Privilege Access and Patch SLAs</strong><br>
+License ManageEngine technician seats only for operators in the CMMC-EC-Technicians Entra group — don't license the entire tenant. Enforce MFA, role-based access control (RBAC), and unique admin accounts on the console. No shared logins. Enable audit logging of all administrative actions. Define and document patch remediation SLAs (e.g., Critical within 72 hours, High within 7 days) as verifiable evidence for the CMMC flaw-remediation assessment objectives.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-029</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Quarterly · Portal #1459311</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Maintain CMVP Cryptographic Module Register</strong><br>
+Keep a living register of every cryptographic module Technijian relies on for CMMC clients: the NAKIVO backup encryption module, Windows Schannel for ScreenConnect, and the ManageEngine EC FIPS module. For each, record: the module name, CMVP certificate number, certificate status (Active, Historical, or Revoked), and the date you last checked. Re-verify quarterly. Re-verify before committing any architecture change to a client. A module that transitions to "Historical" status must be replaced.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-030</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Ongoing · Portal #1459312</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Enable Evidence Generation Across Tool Stack</strong><br>
+A control that Technijian owns but can't prove exists becomes a finding during a client's CMMC assessment — and that finding reflects on us. For every assessment objective Technijian owns, ensure evidence is being generated and is retrievable: ticketing records, log and alert-review records, vulnerability scan reports, SLA reports. Build a systematic evidence collection process so that when a C3PAO assessor asks "show me evidence of control X," we can pull it within minutes.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-031</strong><br><span style="font-size:12px; color:#6c757d;">Per client assessment · Portal #1459313</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Prepare for Client C3PAO Assessment Participation</strong><br>
+When one of our CMMC clients goes through their formal C3PAO assessment, we need to be ready to participate — to be the authoritative voice for the controls Technijian operates on their behalf. Build the process: assemble the supporting CRM, SSP inputs, architecture diagrams, and evidence package per client before each assessment. Be available during the assessment to answer questions from the C3PAO assessor about our tools, configurations, and procedures.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-032</strong><br><span style="font-size:12px; color:#6c757d;">Quarterly · Portal #1459314</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Recurring CUI Re-Scope Check</strong><br>
+Our ciphertext-only architecture depends on one thing: no tool ever incidentally captures CUI. A single backup job, log aggregation rule, or sync process that pulls a CUI file from a client system would flip that data path into full CUI scope — requiring a completely different architecture and assessment. Every quarter, verify that no tool has incidentally started capturing CUI. Check backup job scope, log collection filters, sync rules, RMM agent configurations. Document findings. If anything has changed, immediately flag for architectural review.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-033</strong><br><span style="font-size:12px; color:#6c757d;">One-time + Annual · Portal #1459315</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Confirm FIPS/CMVP Status Directly with Vendors</strong><br>
+Marketing materials lie. The only way to confirm FIPS compliance is to look up the actual CMVP certificate at csrc.nist.gov and verify it is Active for the specific product version you are running. Contact vendors directly and confirm: whether the current NAKIVO build carries an actual CMVP certificate or relies on the host OS in FIPS mode (and whether it actually honors that); whether ManageEngine Endpoint Central's FIPS mode maps to an active CMVP-certificated module for the version deployed; the exact Windows Schannel module/version the ScreenConnect host uses and its CMVP status; and whether any active CMVP certificate exists for the QNAP/Nimbus model and firmware. Do not rely on vendor assurances alone — verify the certificate number yourself.
+</td>
+</tr>
+
+</table>
+
+<hr style="border:none; border-top:2px solid #F67D4B; margin:24px 0;">
+
+<h2 style="color:#F67D4B; font-size:16px;">What to do right now</h2>
+<p>Your 84 tickets are all open in the portal. Start by reading through this email once fully, then open the portal and review your ticket list. The most urgent items are the CMMC architecture work (CMMC-020, -022, -025, -026, -027, -028) and the WISP technical controls (WISP-001 through WISP-009) — these have the most direct client impact. The recurring tasks (weekly log reviews, monthly scans and backups, quarterly phishing) need to be scheduled into your calendar so they happen consistently.</p>
+
+<p>If any ticket is unclear, reply to this email and I'll clarify. Every one of these tasks has a regulatory or contractual basis — none of them are optional.</p>
+
+<p>Thank you,</p>
+
+</div>

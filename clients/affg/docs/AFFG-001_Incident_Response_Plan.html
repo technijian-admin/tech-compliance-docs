@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AFFG Incident Response Plan — Technijian</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:       #006DB6;
+  --orange:     #F67D4B;
+  --teal:       #1EAAC8;
+  --dark:       #1A1A2E;
+  --grey:       #59595B;
+  --off-white:  #F8F9FA;
+  --lt-grey:    #E9ECEF;
+  --text:       #2D2D2D;
+  --red:        #CC0000;
+  --green:      #28A745;
+}
+@page { size: letter; margin: 0; }
+*  { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif; color: var(--text); background:#fff; font-size:11pt; line-height:1.65; }
+
+/* ── PAGE SHELL ────────────────────────────────────────── */
+.page { width:8.5in; min-height:11in; position:relative; display:flex; flex-direction:column; page-break-after:always; }
+.page:last-child { page-break-after:auto; }
+
+/* ── HEADER ────────────────────────────────────────────── */
+.hdr { padding:.52in .85in .18in .85in; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.hdr-logo img { height:48px; width:auto; display:block; }
+.hdr-meta { text-align:right; }
+.hdr-meta .doc-id { font-size:9pt; font-weight:700; color:var(--blue); letter-spacing:1.4px; text-transform:uppercase; margin-bottom:3px; }
+.hdr-meta .doc-status { font-size:9pt; color:var(--grey); }
+.hdr-meta .confidential { font-size:8pt; font-weight:700; color:var(--red); letter-spacing:.8px; text-transform:uppercase; margin-top:2px; }
+.accent-rule { height:3px; margin:0 .85in; background:linear-gradient(90deg, var(--orange) 0% 33%, var(--teal) 33% 66%, var(--blue) 66% 100%); }
+
+/* ── COVER PAGE ────────────────────────────────────────── */
+.cover-body { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1in; text-align:center; gap:18px; }
+.cover-logo img { height:64px; }
+.cover-divider { width:80px; height:3px; background:var(--orange); margin:0 auto; }
+.cover-title { font-size:30pt; font-weight:800; color:var(--dark); line-height:1.2; margin-top:8px; }
+.cover-subtitle { font-size:14pt; color:var(--blue); font-weight:600; }
+.cover-client { font-size:11pt; color:var(--grey); }
+.cover-meta { margin-top:24px; }
+.cover-meta table { border-collapse:collapse; width:340px; }
+.cover-meta td { padding:5px 12px; font-size:10pt; color:var(--grey); text-align:left; border-bottom:1px solid var(--lt-grey); }
+.cover-meta td:first-child { font-weight:700; color:var(--dark); width:140px; }
+.cover-bottom { margin-top:auto; padding:24px 0 .5in; font-size:9pt; color:var(--red); font-weight:700; letter-spacing:.6px; text-transform:uppercase; }
+
+/* ── BODY PAGES ────────────────────────────────────────── */
+.body { flex:1; padding:.45in .95in .35in .95in; }
+.section-bar { display:flex; margin:22px 0 10px; }
+.section-bar .accent { width:4px; background:var(--blue); border-radius:2px; flex-shrink:0; }
+.section-bar .title { padding:6px 0 6px 12px; font-size:14pt; font-weight:700; color:var(--blue); }
+h3 { font-size:11.5pt; font-weight:700; color:var(--dark); margin:16px 0 6px; }
+h4 { font-size:10.5pt; font-weight:600; color:var(--blue); margin:12px 0 4px; }
+p  { margin-bottom:8px; color:var(--text); font-size:10.5pt; }
+ul, ol { margin:6px 0 10px 22px; }
+li { margin-bottom:4px; font-size:10.5pt; }
+strong { color:var(--dark); }
+
+/* ── TABLES ────────────────────────────────────────────── */
+table { width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:10pt; }
+thead tr { background:var(--blue); }
+thead th { color:#fff; font-weight:700; padding:7px 10px; text-align:left; }
+tbody tr:nth-child(odd)  { background:#fff; }
+tbody tr:nth-child(even) { background:var(--off-white); }
+tbody td { padding:6px 10px; border-bottom:1px solid var(--lt-grey); vertical-align:top; }
+.severity-critical { color:var(--red); font-weight:700; }
+.severity-high     { color:var(--orange); font-weight:700; }
+.severity-medium   { color:var(--teal); font-weight:700; }
+.severity-low      { color:var(--grey); }
+.badge { display:inline-block; padding:2px 8px; border-radius:3px; font-size:9pt; font-weight:700; }
+.badge-draft { background:#FFF3CD; color:#856404; }
+
+/* ── CALLOUT BOXES ─────────────────────────────────────── */
+.callout { border-left:4px solid var(--orange); background:var(--off-white); padding:10px 14px; margin:12px 0; border-radius:0 4px 4px 0; font-size:10.5pt; }
+.callout strong { color:var(--orange); }
+.info-box { border:1px solid var(--lt-grey); border-top:3px solid var(--teal); background:var(--off-white); padding:10px 14px; margin:10px 0; border-radius:0 0 4px 4px; font-size:10pt; }
+
+/* ── SIGNATURE BLOCK ───────────────────────────────────── */
+.sig-table { width:100%; border-collapse:collapse; margin:14px 0; font-size:10pt; }
+.sig-table th { background:var(--off-white); color:var(--dark); font-weight:700; padding:7px 10px; border:1px solid var(--lt-grey); text-align:left; }
+.sig-table td { padding:7px 10px; border:1px solid var(--lt-grey); }
+.sig-line { border-bottom:1px solid var(--dark); width:160px; display:inline-block; margin-bottom:2px; }
+
+/* ── FOOTER ────────────────────────────────────────────── */
+.foot-rule { height:1px; background:var(--lt-grey); margin:0 .95in; }
+.foot { padding:10px .95in .45in; display:flex; justify-content:space-between; align-items:center; font-size:9pt; color:var(--grey); }
+.foot .brand { font-weight:700; color:var(--dark); }
+.foot .conf  { color:var(--red); font-weight:700; font-size:8pt; letter-spacing:.5px; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta">
+      <div class="doc-id">AFFG-001 · v1.0</div>
+      <div class="doc-status">Portal Ticket #1459345</div>
+      <div class="confidential">Confidential</div>
+    </div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <div class="cover-body">
+    <div class="cover-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="cover-divider"></div>
+    <div class="cover-title">Incident Response Plan</div>
+    <div class="cover-subtitle">Written Incident Response Program</div>
+    <div class="cover-client">American Fundstars Financial Group LLC</div>
+    <div class="cover-meta">
+      <table>
+        <tr><td>Document ID</td><td>AFFG-001</td></tr>
+        <tr><td>Version</td><td>1.0</td></tr>
+        <tr><td>Date</td><td>June 5, 2026</td></tr>
+        <tr><td>Status</td><td><span class="badge badge-draft">DRAFT — Pending Approval</span></td></tr>
+        <tr><td>Regulatory Basis</td><td>SEC Reg S-P (17 CFR §248.30)</td></tr>
+        <tr><td>Prepared by</td><td>Ravi Jain, CEO — Technijian</td></tr>
+        <tr><td>Phase 1 Deadline</td><td>June 27, 2026</td></tr>
+      </table>
+    </div>
+    <div class="cover-bottom">Confidential — Technijian &amp; American Fundstars Financial Group LLC</div>
+  </div>
+
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · technology as a solution · 18 Technology Dr., Ste 141, Irvine, CA 92618 · 949.379.8499 · technijian.com</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 2 — PURPOSE / IRT
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta"><div class="doc-id">AFFG-001 — Incident Response Plan</div></div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <main class="body">
+
+    <div class="section-bar"><div class="accent"></div><div class="title">1. Purpose and Scope</div></div>
+    <p>This Incident Response Plan (IRP) establishes written procedures for American Fundstars Financial Group LLC (AFFG) to detect, respond to, contain, investigate, and recover from security incidents involving unauthorized access to — or reasonably likely unauthorized access to — customer information, as required by <strong>SEC Regulation S-P (17 CFR §248.30)</strong>.</p>
+    <p>This plan applies to all AFFG systems, personnel, and service providers that store, process, or transmit customer information, including: Microsoft 365, client account management systems, trade execution platforms, local and cloud backup systems (Synology NAS), and network infrastructure (Sophos Firewall AFFG-HQ-FW-02). This plan integrates with AFFG's Business Continuity Plan for operational recovery procedures.</p>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">2. Incident Response Team (IRT)</div></div>
+    <table>
+      <thead><tr><th>Role</th><th>Name</th><th>Organization</th><th>Email</th><th>Cell / After-Hours</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Incident Response Lead</strong></td><td>Ravi Jain</td><td>Technijian (IT Provider)</td><td>rjain@technijian.com</td><td>714.402.3164</td></tr>
+        <tr><td><strong>AFFG Primary Contact</strong></td><td>Iris Liu</td><td>AFFG</td><td>iris.liu@americanfundstars.com</td><td>[TO VERIFY]</td></tr>
+        <tr><td><strong>AFFG Emergency Contact</strong></td><td>Fan Feng</td><td>AFFG</td><td>[TO VERIFY]</td><td>[TO VERIFY]</td></tr>
+        <tr><td><strong>Technijian Technical Lead</strong></td><td>Sai Revanth</td><td>Technijian (IRV:TS1)</td><td>sravanth@technijian.com</td><td>[on-call via portal]</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">3. Incident Classification</div></div>
+    <table>
+      <thead><tr><th>Severity</th><th>Criteria</th><th>Response Time</th></tr></thead>
+      <tbody>
+        <tr><td><span class="severity-critical">P1 — Critical</span></td><td>Confirmed unauthorized access to customer data; active attack; ransomware</td><td>Within 1 hour</td></tr>
+        <tr><td><span class="severity-high">P2 — High</span></td><td>Suspected unauthorized access; significant compromise; vendor breach notification</td><td>Within 4 hours</td></tr>
+        <tr><td><span class="severity-medium">P3 — Medium</span></td><td>Potential vulnerability; anomalous activity under investigation</td><td>Within 24 hours</td></tr>
+        <tr><td><span class="severity-low">P4 — Low</span></td><td>Security event with no confirmed impact; blocked malware; policy violation</td><td>Within 72 hours</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout"><strong>Reg S-P Trigger:</strong> A notification obligation arises when Ravi Jain (Incident Response Lead) determines that sensitive customer information <em>was, or is reasonably likely to have been, accessed without authorization</em>. The 30-day customer notification clock starts from this determination date.</div>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">4. Detection Sources</div></div>
+    <table>
+      <thead><tr><th>Tool</th><th>What It Detects</th><th>Alert Routing</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Huntress (EDR/MDR)</strong></td><td>Endpoint compromise, malware, persistence mechanisms</td><td>Portal ticket → Sai Revanth → Ravi Jain</td></tr>
+        <tr><td><strong>Sophos Firewall (AFFG-HQ-FW-02)</strong></td><td>Network intrusions, anomalous traffic, policy violations</td><td>Portal ticket → Technijian NOC → Ravi Jain</td></tr>
+        <tr><td><strong>Cisco Umbrella</strong></td><td>DNS-layer threats, malicious domains, phishing</td><td>Technijian monitoring</td></tr>
+        <tr><td><strong>Microsoft 365 Admin</strong></td><td>Impossible travel, bulk access, admin account changes</td><td>Technijian M365 monitoring</td></tr>
+        <tr><td><strong>Nakivo / Veeam 365</strong></td><td>Backup failures, unusual data growth, encryption indicators</td><td>Portal ticket (auto-generated)</td></tr>
+        <tr><td><strong>Manual Reporting</strong></td><td>Staff-reported suspicious activity; vendor notifications</td><td>Iris Liu → Ravi Jain</td></tr>
+      </tbody>
+    </table>
+
+  </main>
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · AFFG Incident Response Plan (AFFG-001 v1.0) · June 5, 2026</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 3 — CONTAINMENT / ESCALATION / EVIDENCE / APPROVAL
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta"><div class="doc-id">AFFG-001 — Incident Response Plan</div></div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <main class="body">
+
+    <div class="section-bar"><div class="accent"></div><div class="title">5. Containment Protocols</div></div>
+    <h3>5.1 Immediate Containment (within 1 hour for P1)</h3>
+    <ol>
+      <li><strong>Isolate compromised systems</strong> — Disconnect via Huntress remote isolation or manual disconnection. Do NOT power off (preserves volatile memory).</li>
+      <li><strong>Revoke compromised credentials</strong> — Force password reset on all suspected accounts via M365 Admin Center. Revoke all active sessions.</li>
+      <li><strong>Block malicious indicators</strong> — Add IPs, domains, and file hashes to Sophos and Cisco Umbrella block lists.</li>
+      <li><strong>Preserve network traffic logs</strong> — Export Sophos Firewall logs for the relevant period before log rotation.</li>
+      <li><strong>Notify IRT</strong> — Ravi Jain convenes the IRT within 30 minutes of P1 determination.</li>
+    </ol>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">6. Escalation Matrix</div></div>
+    <table>
+      <thead><tr><th>Situation</th><th>Escalate To</th><th>Within</th></tr></thead>
+      <tbody>
+        <tr><td>Any Huntress P1/P2 alert</td><td>Ravi Jain</td><td>1 hour</td></tr>
+        <tr><td>Confirmed unauthorized access to customer data</td><td>Ravi Jain + Iris Liu</td><td>30 minutes</td></tr>
+        <tr><td>Reg S-P reportable determination</td><td>Ravi → Iris → AFFG principal</td><td>1 hour</td></tr>
+        <tr><td>30-day notification clock starts</td><td>Ravi logs determination date</td><td>Immediately</td></tr>
+        <tr><td>Customer notification required</td><td>Iris approves; Ravi coordinates mailing</td><td>Day 25 (5-day buffer)</td></tr>
+        <tr><td>Ransomware / major system loss</td><td>Activate BCP; Ravi + Iris jointly</td><td>Immediately</td></tr>
+        <tr><td>Service provider breach notification received</td><td>Ravi Jain review and Reg S-P determination</td><td>Within 24 hours</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">7. Evidence Preservation &amp; Retention</div></div>
+    <div class="info-box">
+      <strong>Minimum 90-day preservation</strong> for all digital evidence from incident determination date.<br>
+      <strong>5-year retention (Reg S-P)</strong> for incident reports, customer notifications, determination documentation, and test results.
+    </div>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">8. Annual Testing</div></div>
+    <p>This IRP shall be tested annually via a tabletop exercise (AFFG-029 — Annual Reg S-P Incident Response Tabletop). Exercise results must be documented and gaps remediated within 30 days.</p>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">9. Approval</div></div>
+    <table class="sig-table">
+      <thead><tr><th>Role</th><th>Name</th><th>Signature</th><th>Date</th></tr></thead>
+      <tbody>
+        <tr><td>IT Provider / Incident Response Lead</td><td>Ravi Jain, CEO — Technijian</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+        <tr><td>AFFG Primary Contact</td><td>Iris Liu</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+        <tr><td>AFFG Registered Principal</td><td>&nbsp;</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+      </tbody>
+    </table>
+
+  </main>
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · AFFG Incident Response Plan (AFFG-001 v1.0) · June 5, 2026</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+</body>
+</html>

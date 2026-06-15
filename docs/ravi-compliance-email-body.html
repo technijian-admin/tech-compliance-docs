@@ -1,0 +1,363 @@
+<div style="font-family:'Open Sans','Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; color:#2c2c2c; max-width:700px; line-height:1.6;">
+
+<p>Ravi,</p>
+
+<p>This is your personal reference for the 31 CTO-owned compliance tickets across AFFG and Technijian. All are open in the portal now. The deliverable for every one of these is a <strong>document, policy, or procedure</strong> — the hands-on operational work sits with Sai. Phase deadlines from today (June 4, 2026):</p>
+
+<ul>
+<li><strong style="color:#dc3545;">Phase 1 — Critical: due June 27, 2026 (23 days)</strong></li>
+<li><strong style="color:#fd7e14;">Phase 2 — High: due July 27, 2026 (53 days)</strong></li>
+<li><strong style="color:#198754;">Phase 3 — Medium/Low: due August 26, 2026 (83 days)</strong></li>
+</ul>
+
+<p><strong>Recommended execution order:</strong> AFFG criticals (001 → 002 → 003 → 017) → CMMC foundational (019 → 005 → 004 → 021 → 001 → 003 → 016) → AFFG highs (004–008, 015) → AFFG mediums (009–014, 018, 019, capstone 016) → standing items (020, WISP-013, -014, -033, set AFFG-021 recurring).</p>
+
+<p><strong>Hard dependency:</strong> CMMC-001 (SSP) gates Sai's CMMC-002 (SPRS score) and CMMC-003 (POA&amp;M). Your AFFG documents gate Sai's recurring tests (AFFG-022–029). AFFG-016 (registered-principal approval) is the capstone — sign only after AFFG-001 through 020 are drafted.</p>
+
+<hr style="border:none; border-top:2px solid #F67D4B; margin:24px 0;">
+
+<h1 style="color:#006DB6; font-size:20px;">PART A — AFFG (American Fundstars Financial Group)</h1>
+<p style="font-size:13px; color:#6c757d;">Regulatory basis: SEC Regulation S-P (2024 amendments) · FINRA Rule 4370 · FINRA Rule 3110. Source: Technijian BCP Compliance Review (20 findings). Everything AFFG is client-facing — route through your review before anything goes to AFS.</p>
+
+<table width="100%" cellpadding="10" cellspacing="0" style="border-collapse:collapse; margin-bottom:16px;">
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top; width:180px;"><strong>AFFG-001</strong> <span style="color:#dc3545;">● Phase 1</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459345 · 16h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Create Written Incident Response Program (Reg S-P)</strong><br>
+<strong>Produce:</strong> Standalone IRP (or integrated BCP section) covering: detection procedures, containment protocols, forensic investigation steps, escalation matrix with named contacts and timelines, evidence preservation, eradication &amp; recovery, post-incident review.<br>
+<strong>Inputs needed:</strong> AFS systems/asset list, current monitoring/security tooling, key personnel + roles, after-hours contacts.<br>
+<strong>DoD:</strong> Written IRP covering detection → recovery for customer-information incidents; your review complete; filed to the ticket.<br>
+<strong>Feeds:</strong> AFFG-002 (breach notification) and AFFG-017 (cyber integration).
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-002</strong> <span style="color:#dc3545;">● Phase 1</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459346 · 10h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Establish Customer Breach Notification Procedures (Reg S-P)</strong><br>
+<strong>Produce:</strong> Criteria for when notification is required ("reasonably likely" standard); 30-day timeline from determination; notification-letter content requirements; scoping process to identify affected individuals; at least one approved template notification letter.<br>
+<strong>Inputs needed:</strong> AFS customer-data inventory; legal review of the letter template.<br>
+<strong>DoD:</strong> Documented procedure + approved template letter.<br>
+<strong>Depends on:</strong> Detection/escalation steps from AFFG-001.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-003</strong> <span style="color:#dc3545;">● Phase 1</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459347 · 12h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Establish Service Provider Oversight Framework (Reg S-P)</strong><br>
+<strong>Produce:</strong> Vendor due-diligence procedure; contractual requirements including 72-hour breach notification clause language; ongoing monitoring process; populated inventory of all service providers with access to customer information (AT&amp;T, RingCentral, AWS, Microsoft 365, Synology + any others).<br>
+<strong>DoD:</strong> Oversight framework + populated provider inventory + 72-hr clause language ready for contracts.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-017</strong> <span style="color:#dc3545;">● Phase 1</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459361 · 12h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Expand Cybersecurity Incident Response Integration</strong><br>
+<strong>Produce:</strong> Expanded cybersecurity section (or reference to standalone IRP from AFFG-001) covering: intrusion detection/prevention, endpoint protection, MFA, network segmentation, forensic investigation, law-enforcement coordination, cyber-insurance coverage.<br>
+<strong>Depends on:</strong> Reference AFFG-001 rather than re-writing the IR flow.<br>
+<strong>DoD:</strong> Cybersecurity section that names concrete controls and links to the IRP.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-004</strong> <span style="color:#fd7e14;">● Phase 2</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459348 · 6h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Implement Reg S-P Recordkeeping Requirements</strong><br>
+<strong>Produce:</strong> Recordkeeping requirements specifying: record types (policies, incident reports, notifications, testing results), 5-year retention period, storage location/format, designated custodian name.<br>
+<strong>DoD:</strong> Recordkeeping section adopted; custodian named.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-005</strong> <span style="color:#fd7e14;">● Phase 2</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459349 · 10h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Expand Data Backup and Recovery Specifications (FINRA 4370(c)(1))</strong><br>
+<strong>Produce:</strong> Backup frequency/schedule; RPO and RTO per data category; encryption standards (at rest + in transit); geographic separation of backup sites; hard-copy document backup procedures; restoration-testing routine with documented results.<br>
+<strong>Inputs needed:</strong> AFS's actual backup setup (Synology NAS, cloud), data categories.<br>
+<strong>DoD:</strong> Backup section with concrete RPO/RTO, encryption, and test cadence.<br>
+<strong>Gates:</strong> Sai's AFFG-024 (recurring restore test) executes against this spec.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-006</strong> <span style="color:#fd7e14;">● Phase 2</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459350 · 12h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Build Mission-Critical Systems Inventory (FINRA 4370(c)(2))</strong><br>
+<strong>Produce:</strong> Inventory mapping each system → business function, owner, dependencies, RTO/RPO, and alternate processing capability. Must cover: order management, trade execution, clearing/settlement, customer account access, and fund/securities delivery.<br>
+<strong>Inputs needed:</strong> AFS application/system list; clearing/carrying firm details.<br>
+<strong>DoD:</strong> Completed mission-critical systems inventory.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-007</strong> <span style="color:#fd7e14;">● Phase 2</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459351 · 8h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Develop Financial and Operational Assessment Procedures (FINRA 4370(c)(3))</strong><br>
+<strong>Produce:</strong> Procedures to assess ability to fund operations during disruption; evaluate changes to credit-risk exposure; determine ability to meet margin/capital requirements; decision criteria for continuing vs. suspending operations.<br>
+<strong>DoD:</strong> Assessment procedure section adopted.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-008</strong> <span style="color:#fd7e14;">● Phase 2</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459352 · 10h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Document Customer Access to Funds and Securities (FINRA 4370(c)(10))</strong><br>
+<strong>Produce:</strong> Procedures for transferring/making accounts accessible; arrangements with carrying/clearing firms for direct customer access; timelines to restore access; steps if the firm cannot continue, including SIPC notification process.<br>
+<strong>Inputs needed:</strong> AFS clearing/custody arrangements.<br>
+<strong>DoD:</strong> Customer-access procedures including the cannot-continue path.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-015</strong> <span style="color:#fd7e14;">● Phase 2</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459359 · 8h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Add Supervisory Continuity Provisions (FINRA Rule 3110)</strong><br>
+<strong>Produce:</strong> Supervisory Continuity section covering: designation of alternate supervisory personnel; communications-review continuity; customer-account monitoring continuity; trade supervision at alternate locations; documentation of supervisory activities during disruption.<br>
+<strong>DoD:</strong> Supervisory-continuity section adopted.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-009</strong> <span style="color:#198754;">● Phase 3</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459353 · 6h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Define Alternate Customer Communication Procedures (FINRA 4370(c)(4))</strong><br>
+<strong>Produce:</strong> Specific alternate channels per disruption scenario (firm-only, building, district, city, regional): alternate phone numbers, backup email, website notifications, social media, written correspondence procedures.<br>
+<strong>DoD:</strong> Per-scenario customer communications plan documented.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-010</strong> <span style="color:#198754;">● Phase 3</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459354 · 6h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Expand Employee Communication and Notification Plan (FINRA 4370(c)(5))</strong><br>
+<strong>Produce:</strong> Mass-notification system; backup tools (SMS, messaging apps); out-of-band procedures; tested call tree with documented results and test cadence.<br>
+<strong>DoD:</strong> Expanded employee comms plan documented; test cadence ties to Sai's AFFG-025.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-011</strong> <span style="color:#198754;">● Phase 3</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459355 · 6h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Document Critical Business Constituent Impact Procedures (FINRA 4370(c)(7))</strong><br>
+<strong>Produce:</strong> Identify all clearing firms, custodians, banks, and counterparties; procedures to notify them of disruptions, maintain connectivity, access backup systems, and document impact assessments.<br>
+<strong>DoD:</strong> Constituent list + impact assessment procedures documented.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-012</strong> <span style="color:#198754;">● Phase 3</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459356 · 5h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Add Regulatory Reporting Continuity Procedures (FINRA 4370(c)(8))</strong><br>
+<strong>Produce:</strong> List of all regulatory filings + deadlines (FOCUS reports, trade reporting, etc.); alternate submission methods per disruption level; designated personnel; extension-request procedures.<br>
+<strong>DoD:</strong> Regulatory-reporting continuity section documented.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-013</strong> <span style="color:#198754;">● Phase 3</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459357 · 5h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Create BCP Customer Disclosure Statement (FINRA 4370(e))</strong><br>
+<strong>Produce:</strong> BCP disclosure statement; procedures to provide at account opening, post on firm website, mail on request, and update on material change; covers all disruption scenarios.<br>
+<strong>DoD:</strong> Disclosure statement + distribution procedure. Ties to Sai's AFFG-028 for ongoing upkeep.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-014</strong> <span style="color:#198754;">● Phase 3</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459358 · 4h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Register and Maintain FINRA Contact System Emergency Contacts (FINRA 4370(f))</strong><br>
+<strong>Produce:</strong> Procedures to register/maintain emergency contacts in the FINRA Contact System (FCS); update promptly on material change; review annually by the 17th business day after year-end.<br>
+<strong>DoD:</strong> Documented FCS procedure. Ties to Sai's AFFG-022 for annual execution.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-018</strong> <span style="color:#198754;">● Phase 3</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459362 · 4h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Add Customer Information Disposal Procedures (Reg S-P)</strong><br>
+<strong>Produce:</strong> Disposal procedures covering: secure wiping/degaussing of electronic records; cross-cut shredding of hard copy; disposal documentation; third-party disposal-vendor oversight.<br>
+<strong>DoD:</strong> Disposal procedure section adopted.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-019</strong> <span style="color:#198754;">● Phase 3</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459363 · 8h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Comprehensive BCP Refresh and Currency Update (FINRA 4370(b))</strong><br>
+<strong>Produce:</strong> Verify all personnel/contacts/titles are current; update all technology references (doc is dated Oct 2023); document the annual review (date + reviewer); implement version control/change log.<br>
+<strong>DoD:</strong> Refreshed, current BCP with a change log.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-020</strong> <span style="color:#6c757d;">● Low / Best practice</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459364 · 4h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Document Alternate Site Capabilities and Agreements</strong><br>
+<strong>Produce:</strong> Document the alternate site (84 Spacial, Irvine, CA 92618) and hotel-conference-room option: available infrastructure (desks, connectivity, phones), capacity, pre-arranged agreements, activation time, readiness testing cadence.<br>
+<strong>DoD:</strong> Alternate-site detail section populated.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-016</strong> <span style="color:#198754;">● Phase 3 — CAPSTONE</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459360 · 3h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Add Registered Principal Approval and Version Control (FINRA 4370(b))</strong><br>
+<strong>⚠️ Do this LAST — after AFFG-001 through 020 are complete.</strong><br>
+<strong>Produce:</strong> Formal approval section with registered-principal signature block, approval date, annual-review certification, and version-control/change log.<br>
+<strong>DoD:</strong> Approved, signed, version-controlled BCP. This is the final sign-off that makes the plan FINRA-compliant.
+</td>
+</tr>
+
+<tr style="background:#f8f9fa;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>AFFG-021</strong> <span style="color:#6c757d;">● Recurring (Annual)</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459365 · 8h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Annual BCP Review and Registered Principal Approval</strong><br>
+<strong>Action:</strong> Set this up as a recurring annual ticket. Validate RTO/RPO, recovery strategies, contacts, technology; document reviewer + date; update version log; obtain your principal sign-off each year.<br>
+<strong>DoD:</strong> Recurring ticket configured; first annual review scheduled.
+</td>
+</tr>
+
+</table>
+
+<hr style="border:none; border-top:2px solid #006DB6; margin:24px 0;">
+
+<h1 style="color:#006DB6; font-size:20px;">PART B — Technijian (CMMC Readiness + Governance)</h1>
+<p style="font-size:13px; color:#6c757d;">These 10 tickets produce the foundational documents that unblock the DoD/Electrocute prospect pipeline and that Sai's 76 operational tickets depend on. <strong>Posture invariant:</strong> Technijian does not store/process/transmit CUI on its own systems — only encrypted ciphertext backups (client-held keys). Lock this in CMMC-019 first; everything else references it.</p>
+
+<table width="100%" cellpadding="10" cellspacing="0" style="border-collapse:collapse; margin-bottom:16px;">
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top; width:180px;"><strong>CMMC-019</strong> <span style="color:#dc3545;">● Do first</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459371 · 6h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Document CMMC Scope Position (No CUI on Technijian Systems)</strong><br>
+<strong>Produce:</strong> A short, signed scope-position statement: Technijian does not store/process/transmit CUI on its own systems; only encrypted backup ciphertext (client holds the key) reaches the Technijian DC; Technijian cannot decrypt. This one sentence governs every downstream tool configuration and CRM entry.<br>
+<strong>DoD:</strong> Signed scope-position statement referenced by the SSP (CMMC-001) and CRM (CMMC-004).
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-005</strong><br><span style="font-size:12px; color:#6c757d;">Portal #1459369 · 12h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Add CUI Data Category and Handling Procedures to WISP</strong><br>
+<strong>Produce:</strong> WISP §5.1 addendum adding CUI and FCI as data classification categories; document CUI identification, marking, labeling, storage, transmission, media handling/transport, and destruction (NIST 800-171 MP family).<br>
+<strong>DoD:</strong> Approved WISP addendum. Feeds CMMC-001 (SSP input); training delivery is Sai's CMMC-017.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-004</strong><br><span style="font-size:12px; color:#6c757d;">Portal #1459368 · 16h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Create Customer Responsibility Matrix (CRM) Template</strong><br>
+<strong>Produce:</strong> Reusable matrix mapping each applicable NIST 800-171 control → Technijian / Client / Shared, with an implementation note per control. This is the core ESP artifact — it defines exactly what we do and do not do on client systems.<br>
+<strong>DoD:</strong> Reusable CRM template. Extended to assessment-objective depth by CMMC-021.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-021</strong><br><span style="font-size:12px; color:#6c757d;">Portal #1459372 · 20h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Map CRM to All 320 CMMC Level 2 Assessment Objectives</strong><br>
+<strong>Produce:</strong> Extend CMMC-004 from the 110 controls down to all 320 Level 2 assessment objectives; mark each Client/Technijian/Shared with a specific implementation note — avoid vague "Technijian handles security" language. This is what carries us through each client C3PAO assessment.<br>
+<strong>Depends on:</strong> CMMC-004 must be complete first.<br>
+<strong>DoD:</strong> Objective-level CRM ready to drop into any client SSP.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-001</strong> <span style="color:#dc3545;">● Keystone</span><br><span style="font-size:12px; color:#6c757d;">Portal #1459366 · 32h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Develop NIST 800-171 System Security Plan (SSP)</strong><br>
+<strong>Produce:</strong> The authoritative document of how Technijian meets all 110 NIST SP 800-171 Rev 2 requirements. Map each control to existing WISP/IRP/BCP procedures and technical configurations; define the system boundary; describe network and data flows; identify inherited controls (TPX data center SOC 2, Microsoft 365).<br>
+<strong>Inputs:</strong> CMMC-019 (scope statement) + CMMC-005 (CUI category) + CMMC-004 (CRM).<br>
+<strong>DoD:</strong> SSP covering all 110 controls, ready for assessor/client review.<br>
+<strong>Gates:</strong> Sai's CMMC-002 (SPRS score) and CMMC-003 (POA&amp;M) cannot be completed until this exists.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-003</strong><br><span style="font-size:12px; color:#6c757d;">Portal #1459367 · 12h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Build and Maintain POA&amp;M for Open 800-171 Gaps</strong><br>
+<strong>Produce:</strong> Plan of Action and Milestones tracking every NIST 800-171 requirement not yet fully implemented. For each gap: deficiency description, planned remediation, responsible owner, milestone dates, compensating controls. Review monthly.<br>
+<strong>Depends on:</strong> Built from the gap list identified in CMMC-001.<br>
+<strong>DoD:</strong> POA&amp;M covering all open gaps with a monthly review cadence established.
+</td>
+</tr>
+
+<tr style="background:#fff3cd;">
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>CMMC-016</strong><br><span style="font-size:12px; color:#6c757d;">Portal #1459370 · 8h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Develop DoD-Client MSA/SOW Addendum</strong><br>
+<strong>Produce:</strong> Contract addendum for DoD-adjacent clients covering: agreement to be named in the client SSP, willingness to be assessed as a Security Protection Asset, DFARS 252.204-7012/7021 flow-down acceptance, CUI handling terms, and reference to the CRM.<br>
+<strong>Action:</strong> Route through legal review before use.<br>
+<strong>DoD:</strong> Legal-reviewed addendum template ready for client contracts.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-013</strong><br><span style="font-size:12px; color:#6c757d;">Portal #1459373 · 8h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Establish Privacy Impact Assessment (PIA) Process</strong><br>
+<strong>Produce:</strong> PIA template + process document; triggers for when a PIA is required (new systems, new vendors, new PII/PHI engagements); Security Officer as PIA reviewer; initial PIAs for all current data processing activities; storage in the controlled-document repository.<br>
+<strong>DoD:</strong> Template + process + initial PIAs filed.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-014</strong><br><span style="font-size:12px; color:#6c757d;">Portal #1459374 · 12h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Implement Change Management Process</strong><br>
+<strong>Produce:</strong> Formal change-management process in the ticketing system; change-request templates (description, justification, risk classification, affected systems, rollback plan, testing, approvals); Standard/Normal/Emergency change workflows; staff training plan.<br>
+<strong>DoD:</strong> Documented process + templates + staff trained.
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #dee2e6; vertical-align:top;"><strong>WISP-033</strong><br><span style="font-size:12px; color:#6c757d;">Portal #1459375 · 6h</span></td>
+<td style="border:1px solid #dee2e6;">
+<strong>Establish BAA Inventory and Tracking Process</strong><br>
+<strong>Produce:</strong> Register of all active Business Associate Agreements (BAAs): client name, execution date, scope of services, PHI data types, renewal/expiry. Annual review process. Downstream BAA procedures with subcontractors accessing PHI. BAA termination + PHI-destruction procedures.<br>
+<strong>DoD:</strong> BAA register + tracking process operational.
+</td>
+</tr>
+
+</table>
+
+<hr style="border:none; border-top:2px solid #F67D4B; margin:24px 0;">
+
+<h2 style="color:#F67D4B; font-size:16px;">Ticket → Portal # Quick Reference</h2>
+<table width="100%" cellpadding="6" cellspacing="0" style="border-collapse:collapse; font-size:13px;">
+<tr style="background:#006DB6; color:#fff;">
+<td style="border:1px solid #dee2e6; padding:6px;"><strong>Ticket</strong></td>
+<td style="border:1px solid #dee2e6; padding:6px;"><strong>Portal #</strong></td>
+<td style="border:1px solid #dee2e6; padding:6px;"><strong>Ticket</strong></td>
+<td style="border:1px solid #dee2e6; padding:6px;"><strong>Portal #</strong></td>
+</tr>
+<tr style="background:#f8f9fa;"><td style="border:1px solid #dee2e6; padding:6px;">AFFG-001</td><td style="border:1px solid #dee2e6; padding:6px;">1459345</td><td style="border:1px solid #dee2e6; padding:6px;">AFFG-017</td><td style="border:1px solid #dee2e6; padding:6px;">1459361</td></tr>
+<tr><td style="border:1px solid #dee2e6; padding:6px;">AFFG-002</td><td style="border:1px solid #dee2e6; padding:6px;">1459346</td><td style="border:1px solid #dee2e6; padding:6px;">AFFG-018</td><td style="border:1px solid #dee2e6; padding:6px;">1459362</td></tr>
+<tr style="background:#f8f9fa;"><td style="border:1px solid #dee2e6; padding:6px;">AFFG-003</td><td style="border:1px solid #dee2e6; padding:6px;">1459347</td><td style="border:1px solid #dee2e6; padding:6px;">AFFG-019</td><td style="border:1px solid #dee2e6; padding:6px;">1459363</td></tr>
+<tr><td style="border:1px solid #dee2e6; padding:6px;">AFFG-004</td><td style="border:1px solid #dee2e6; padding:6px;">1459348</td><td style="border:1px solid #dee2e6; padding:6px;">AFFG-020</td><td style="border:1px solid #dee2e6; padding:6px;">1459364</td></tr>
+<tr style="background:#f8f9fa;"><td style="border:1px solid #dee2e6; padding:6px;">AFFG-005</td><td style="border:1px solid #dee2e6; padding:6px;">1459349</td><td style="border:1px solid #dee2e6; padding:6px;">AFFG-021</td><td style="border:1px solid #dee2e6; padding:6px;">1459365</td></tr>
+<tr><td style="border:1px solid #dee2e6; padding:6px;">AFFG-006</td><td style="border:1px solid #dee2e6; padding:6px;">1459350</td><td style="border:1px solid #dee2e6; padding:6px;">CMMC-001</td><td style="border:1px solid #dee2e6; padding:6px;">1459366</td></tr>
+<tr style="background:#f8f9fa;"><td style="border:1px solid #dee2e6; padding:6px;">AFFG-007</td><td style="border:1px solid #dee2e6; padding:6px;">1459351</td><td style="border:1px solid #dee2e6; padding:6px;">CMMC-003</td><td style="border:1px solid #dee2e6; padding:6px;">1459367</td></tr>
+<tr><td style="border:1px solid #dee2e6; padding:6px;">AFFG-008</td><td style="border:1px solid #dee2e6; padding:6px;">1459352</td><td style="border:1px solid #dee2e6; padding:6px;">CMMC-004</td><td style="border:1px solid #dee2e6; padding:6px;">1459368</td></tr>
+<tr style="background:#f8f9fa;"><td style="border:1px solid #dee2e6; padding:6px;">AFFG-009</td><td style="border:1px solid #dee2e6; padding:6px;">1459353</td><td style="border:1px solid #dee2e6; padding:6px;">CMMC-005</td><td style="border:1px solid #dee2e6; padding:6px;">1459369</td></tr>
+<tr><td style="border:1px solid #dee2e6; padding:6px;">AFFG-010</td><td style="border:1px solid #dee2e6; padding:6px;">1459354</td><td style="border:1px solid #dee2e6; padding:6px;">CMMC-016</td><td style="border:1px solid #dee2e6; padding:6px;">1459370</td></tr>
+<tr style="background:#f8f9fa;"><td style="border:1px solid #dee2e6; padding:6px;">AFFG-011</td><td style="border:1px solid #dee2e6; padding:6px;">1459355</td><td style="border:1px solid #dee2e6; padding:6px;">CMMC-019</td><td style="border:1px solid #dee2e6; padding:6px;">1459371</td></tr>
+<tr><td style="border:1px solid #dee2e6; padding:6px;">AFFG-012</td><td style="border:1px solid #dee2e6; padding:6px;">1459356</td><td style="border:1px solid #dee2e6; padding:6px;">CMMC-021</td><td style="border:1px solid #dee2e6; padding:6px;">1459372</td></tr>
+<tr style="background:#f8f9fa;"><td style="border:1px solid #dee2e6; padding:6px;">AFFG-013</td><td style="border:1px solid #dee2e6; padding:6px;">1459357</td><td style="border:1px solid #dee2e6; padding:6px;">WISP-013</td><td style="border:1px solid #dee2e6; padding:6px;">1459373</td></tr>
+<tr><td style="border:1px solid #dee2e6; padding:6px;">AFFG-014</td><td style="border:1px solid #dee2e6; padding:6px;">1459358</td><td style="border:1px solid #dee2e6; padding:6px;">WISP-014</td><td style="border:1px solid #dee2e6; padding:6px;">1459374</td></tr>
+<tr style="background:#f8f9fa;"><td style="border:1px solid #dee2e6; padding:6px;">AFFG-015</td><td style="border:1px solid #dee2e6; padding:6px;">1459359</td><td style="border:1px solid #dee2e6; padding:6px;">WISP-033</td><td style="border:1px solid #dee2e6; padding:6px;">1459375</td></tr>
+<tr><td style="border:1px solid #dee2e6; padding:6px;">AFFG-016</td><td style="border:1px solid #dee2e6; padding:6px;">1459360</td><td style="border:1px solid #dee2e6; padding:6px;"></td><td style="border:1px solid #dee2e6; padding:6px;"></td></tr>
+</table>
+
+<p style="margin-top:20px;"><strong>Total: 31 tickets · ~295 estimated hours · AFFG 21 tickets (~163h) · Technijian 10 tickets (~132h)</strong></p>
+
+<p>All tickets are open in the portal. Start with CMMC-019 and the four AFFG Phase 1 criticals — those are due in 23 days.</p>
+
+<p>Thank you,</p>
+
+</div>

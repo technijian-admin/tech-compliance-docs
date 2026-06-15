@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AFFG Service Provider Oversight Framework — Technijian</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:       #006DB6;
+  --orange:     #F67D4B;
+  --teal:       #1EAAC8;
+  --dark:       #1A1A2E;
+  --grey:       #59595B;
+  --off-white:  #F8F9FA;
+  --lt-grey:    #E9ECEF;
+  --text:       #2D2D2D;
+  --red:        #CC0000;
+  --green:      #28A745;
+}
+@page { size: letter; margin: 0; }
+*  { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif; color: var(--text); background:#fff; font-size:11pt; line-height:1.65; }
+
+/* ── PAGE SHELL ────────────────────────────────────────── */
+.page { width:8.5in; min-height:11in; position:relative; display:flex; flex-direction:column; page-break-after:always; }
+.page:last-child { page-break-after:auto; }
+
+/* ── HEADER ────────────────────────────────────────────── */
+.hdr { padding:.52in .85in .18in .85in; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.hdr-logo img { height:48px; width:auto; display:block; }
+.hdr-meta { text-align:right; }
+.hdr-meta .doc-id { font-size:9pt; font-weight:700; color:var(--blue); letter-spacing:1.4px; text-transform:uppercase; margin-bottom:3px; }
+.hdr-meta .doc-status { font-size:9pt; color:var(--grey); }
+.hdr-meta .confidential { font-size:8pt; font-weight:700; color:var(--red); letter-spacing:.8px; text-transform:uppercase; margin-top:2px; }
+.accent-rule { height:3px; margin:0 .85in; background:linear-gradient(90deg, var(--orange) 0% 33%, var(--teal) 33% 66%, var(--blue) 66% 100%); }
+
+/* ── COVER PAGE ────────────────────────────────────────── */
+.cover-body { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1in; text-align:center; gap:18px; }
+.cover-logo img { height:64px; }
+.cover-divider { width:80px; height:3px; background:var(--orange); margin:0 auto; }
+.cover-title { font-size:30pt; font-weight:800; color:var(--dark); line-height:1.2; margin-top:8px; }
+.cover-subtitle { font-size:14pt; color:var(--blue); font-weight:600; }
+.cover-client { font-size:11pt; color:var(--grey); }
+.cover-meta { margin-top:24px; }
+.cover-meta table { border-collapse:collapse; width:340px; }
+.cover-meta td { padding:5px 12px; font-size:10pt; color:var(--grey); text-align:left; border-bottom:1px solid var(--lt-grey); }
+.cover-meta td:first-child { font-weight:700; color:var(--dark); width:140px; }
+.cover-bottom { margin-top:auto; padding:24px 0 .5in; font-size:9pt; color:var(--red); font-weight:700; letter-spacing:.6px; text-transform:uppercase; }
+
+/* ── BODY PAGES ────────────────────────────────────────── */
+.body { flex:1; padding:.45in .95in .35in .95in; }
+.section-bar { display:flex; margin:22px 0 10px; }
+.section-bar .accent { width:4px; background:var(--blue); border-radius:2px; flex-shrink:0; }
+.section-bar .title { padding:6px 0 6px 12px; font-size:14pt; font-weight:700; color:var(--blue); }
+h3 { font-size:11.5pt; font-weight:700; color:var(--dark); margin:16px 0 6px; }
+h4 { font-size:10.5pt; font-weight:600; color:var(--blue); margin:12px 0 4px; }
+p  { margin-bottom:8px; color:var(--text); font-size:10.5pt; }
+ul, ol { margin:6px 0 10px 22px; }
+li { margin-bottom:4px; font-size:10.5pt; }
+strong { color:var(--dark); }
+
+/* ── TABLES ────────────────────────────────────────────── */
+table { width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:10pt; }
+thead tr { background:var(--blue); }
+thead th { color:#fff; font-weight:700; padding:7px 10px; text-align:left; }
+tbody tr:nth-child(odd)  { background:#fff; }
+tbody tr:nth-child(even) { background:var(--off-white); }
+tbody td { padding:6px 10px; border-bottom:1px solid var(--lt-grey); vertical-align:top; }
+.badge { display:inline-block; padding:2px 8px; border-radius:3px; font-size:9pt; font-weight:700; }
+.badge-draft { background:#FFF3CD; color:#856404; }
+.badge-ok    { background:#D4EDDA; color:#155724; }
+.badge-verify { background:#FFF3CD; color:#856404; }
+.tier-high   { color:var(--red); font-weight:700; }
+.tier-medium { color:var(--orange); font-weight:700; }
+.tier-low    { color:var(--teal); font-weight:700; }
+
+/* ── CALLOUT BOXES ─────────────────────────────────────── */
+.callout { border-left:4px solid var(--orange); background:var(--off-white); padding:10px 14px; margin:12px 0; border-radius:0 4px 4px 0; font-size:10.5pt; }
+.callout strong { color:var(--orange); }
+.info-box { border:1px solid var(--lt-grey); border-top:3px solid var(--teal); background:var(--off-white); padding:10px 14px; margin:10px 0; border-radius:0 0 4px 4px; font-size:10pt; }
+.provision-box { border:1px solid var(--lt-grey); border-left:4px solid var(--blue); background:var(--off-white); padding:10px 14px; margin:10px 0; border-radius:0 4px 4px 0; font-size:10pt; }
+.provision-box strong { color:var(--blue); }
+.provision-box blockquote { margin:6px 0 0 0; padding:8px 12px; background:#fff; border-left:3px solid var(--lt-grey); font-style:italic; font-size:9.5pt; color:var(--grey); }
+
+/* ── SIGNATURE BLOCK ───────────────────────────────────── */
+.sig-table { width:100%; border-collapse:collapse; margin:14px 0; font-size:10pt; }
+.sig-table th { background:var(--off-white); color:var(--dark); font-weight:700; padding:7px 10px; border:1px solid var(--lt-grey); text-align:left; }
+.sig-table td { padding:7px 10px; border:1px solid var(--lt-grey); }
+.sig-line { border-bottom:1px solid var(--dark); width:160px; display:inline-block; margin-bottom:2px; }
+
+/* ── FOOTER ────────────────────────────────────────────── */
+.foot-rule { height:1px; background:var(--lt-grey); margin:0 .95in; }
+.foot { padding:10px .95in .45in; display:flex; justify-content:space-between; align-items:center; font-size:9pt; color:var(--grey); }
+.foot .brand { font-weight:700; color:var(--dark); }
+.foot .conf  { color:var(--red); font-weight:700; font-size:8pt; letter-spacing:.5px; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta">
+      <div class="doc-id">AFFG-003 · v1.0</div>
+      <div class="doc-status">Portal Ticket #1459347</div>
+      <div class="confidential">Confidential</div>
+    </div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <div class="cover-body">
+    <div class="cover-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="cover-divider"></div>
+    <div class="cover-title">Service Provider Oversight Framework</div>
+    <div class="cover-subtitle">Vendor Oversight Program</div>
+    <div class="cover-client">American Fundstars Financial Group LLC</div>
+    <div class="cover-meta">
+      <table>
+        <tr><td>Document ID</td><td>AFFG-003</td></tr>
+        <tr><td>Version</td><td>1.0</td></tr>
+        <tr><td>Date</td><td>June 5, 2026</td></tr>
+        <tr><td>Status</td><td><span class="badge badge-draft">DRAFT — Pending Approval</span></td></tr>
+        <tr><td>Regulatory Basis</td><td>SEC Reg S-P (17 CFR §248.30(a)(1))</td></tr>
+        <tr><td>Prepared by</td><td>Ravi Jain, CEO — Technijian</td></tr>
+        <tr><td>Phase 1 Deadline</td><td>June 27, 2026</td></tr>
+      </table>
+    </div>
+    <div class="cover-bottom">Confidential — Technijian &amp; American Fundstars Financial Group LLC</div>
+  </div>
+
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · technology as a solution · 18 Technology Dr., Ste 141, Irvine, CA 92618 · 949.379.8499 · technijian.com</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 2 — PURPOSE / INVENTORY / CONTRACTUAL PROVISIONS / REMEDIATION SCHEDULE
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta"><div class="doc-id">AFFG-003 — Service Provider Oversight Framework</div></div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <main class="body">
+
+    <div class="section-bar"><div class="accent"></div><div class="title">1. Purpose</div></div>
+    <p>SEC Regulation S-P (2024 amendments) requires covered institutions to oversee service providers that access, maintain, or otherwise are permitted to use sensitive customer information. This framework documents AFFG's procedures for managing such providers, including contractual requirements, due diligence, and ongoing monitoring, as required by <strong>17 CFR §248.30(a)(1)</strong>.</p>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">2. Service Provider Inventory</div></div>
+    <p>The following vendors have been identified as having access to, or responsibility for, AFFG customer information. This list must be reviewed and updated at least annually (see AFFG-026 — Annual Service Provider Oversight Review).</p>
+    <table>
+      <thead><tr><th>#</th><th>Vendor</th><th>Category</th><th>Customer Data Access</th><th>Contract</th><th>72-Hr Clause?</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>AT&amp;T</strong></td><td>Telecommunications</td><td>Yes — voice/data transmission</td><td><span class="badge badge-verify">VERIFY</span></td><td><span class="badge badge-verify">VERIFY</span></td></tr>
+        <tr><td>2</td><td><strong>RingCentral</strong></td><td>Business Communications (UCaaS)</td><td>Yes — phone, voicemail, messaging</td><td><span class="badge badge-verify">VERIFY</span></td><td><span class="badge badge-verify">VERIFY</span></td></tr>
+        <tr><td>3</td><td><strong>Amazon Web Services</strong></td><td>Cloud Infrastructure</td><td>Yes — cloud-hosted data/applications</td><td>AWS DPA + BAA</td><td><span class="badge badge-verify">VERIFY</span></td></tr>
+        <tr><td>4</td><td><strong>Microsoft 365</strong></td><td>Cloud Productivity</td><td>Yes — email, documents, client data</td><td>Microsoft Customer Agreement</td><td>Microsoft DPA in place</td></tr>
+        <tr><td>5</td><td><strong>Synology (NAS)</strong></td><td>Local Backup</td><td>Yes — backup copies of customer data</td><td>N/A — hardware</td><td><span class="badge badge-verify">VERIFY cloud</span></td></tr>
+        <tr><td>6</td><td><strong>Technijian</strong></td><td>IT Managed Services</td><td>Yes — access to manage all above systems</td><td>MSA with AFFG</td><td><span class="badge badge-ok">✔ In MSA</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">3.1 Required Contractual Provisions</div></div>
+    <p>All service provider agreements for vendors with access to customer information must include, or be amended to include, the following four provisions:</p>
+
+    <div class="provision-box">
+      <strong>3.1.1 — 72-Hour Breach Notification</strong>
+      <blockquote>"[Vendor] shall notify American Fundstars Financial Group LLC in writing within seventy-two (72) hours of determining that any Sensitive Customer Information maintained, processed, or transmitted on behalf of AFFG has been, or is reasonably believed to have been, accessed, acquired, or disclosed without authorization. Notification shall include: (1) a description of the nature of the incident; (2) the categories and approximate number of customer records involved; (3) the measures taken or planned to address the incident; and (4) the name and contact information of the vendor representative responsible for the incident response."</blockquote>
+    </div>
+
+    <div class="provision-box">
+      <strong>3.1.2 — Security Program Requirements</strong>
+      <blockquote>"[Vendor] shall maintain administrative, technical, and physical safeguards appropriate to the sensitivity of the customer information in its custody, at a level no less protective than the standards set forth in SEC Regulation S-P and applicable NIST guidance."</blockquote>
+    </div>
+
+    <div class="provision-box">
+      <strong>3.1.3 — Right to Audit</strong>
+      <blockquote>"AFFG reserves the right, upon reasonable notice, to audit [Vendor]'s information security practices as they relate to AFFG customer information, or to require [Vendor] to provide a current third-party security audit report (e.g., SOC 2 Type II) upon request."</blockquote>
+    </div>
+
+    <div class="provision-box">
+      <strong>3.1.4 — Data Return and Destruction</strong>
+      <blockquote>"Upon termination of this agreement, [Vendor] shall return to AFFG or securely destroy all AFFG customer information in its possession within [30] days, and provide written certification of destruction."</blockquote>
+    </div>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">3.2 Priority Remediation Schedule</div></div>
+    <p>The following vendors require immediate contract review to verify or add the 72-hour breach notification clause:</p>
+    <table>
+      <thead><tr><th>Priority</th><th>Vendor</th><th>Action Required</th><th>Owner</th><th>Target</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1</strong></td><td>AT&amp;T</td><td>Review contract; add 72-hr clause if missing</td><td>Iris Liu / AFFG counsel</td><td>30 days</td></tr>
+        <tr><td><strong>2</strong></td><td>RingCentral</td><td>Review contract; add 72-hr clause if missing</td><td>Iris Liu / AFFG counsel</td><td>30 days</td></tr>
+        <tr><td><strong>3</strong></td><td>AWS</td><td>Review DPA for breach notification timeline</td><td>Iris Liu / AFFG counsel</td><td>30 days</td></tr>
+        <tr><td><strong>4</strong></td><td>Microsoft 365</td><td>Microsoft DPA in place; verify notification timeline</td><td>Ravi Jain</td><td>30 days</td></tr>
+        <tr><td><strong>5</strong></td><td>Synology</td><td>NAS is on-site; if cloud component used, review terms</td><td>Ravi Jain</td><td>30 days</td></tr>
+      </tbody>
+    </table>
+
+  </main>
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · AFFG Service Provider Oversight Framework (AFFG-003 v1.0) · June 5, 2026</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 3 — DUE DILIGENCE / MONITORING / BREACH INTAKE / RECORDS / APPROVAL
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <header class="hdr">
+    <div class="hdr-logo"><img src="https://technijian.com/wp-content/uploads/2026/03/technijian-logo-full-color-600x125-1.png" alt="Technijian"></div>
+    <div class="hdr-meta"><div class="doc-id">AFFG-003 — Service Provider Oversight Framework</div></div>
+  </header>
+  <div class="accent-rule"></div>
+
+  <main class="body">
+
+    <div class="section-bar"><div class="accent"></div><div class="title">4.1 Initial Due Diligence — Before Onboarding a New Vendor</div></div>
+    <p>Before granting any new vendor access to customer information, AFFG and/or Technijian must complete: (1) a security questionnaire covering data encryption, access controls, incident response, subcontractor management, and compliance certifications; (2) review of the vendor's most recent SOC 2 Type II report or equivalent; (3) contract review confirming all required provisions per Section 3.1 are present before execution; and (4) a risk tier assignment based on volume and sensitivity of customer data handled.</p>
+
+    <table>
+      <thead><tr><th>Risk Tier</th><th>Criteria</th><th>Due Diligence Level</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tier-high">Tier 1 — High</span></td><td>Direct access to large volumes of customer PII/financial data</td><td>Full security questionnaire + SOC 2 + contract review</td></tr>
+        <tr><td><span class="tier-medium">Tier 2 — Medium</span></td><td>Indirect access; limited customer data</td><td>Abbreviated questionnaire + contract review</td></tr>
+        <tr><td><span class="tier-low">Tier 3 — Low</span></td><td>No direct customer data access</td><td>Contract clause + annual confirmation</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">4.2 Ongoing Monitoring</div></div>
+    <table>
+      <thead><tr><th>Activity</th><th>Frequency</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>Review updated SOC 2 Type II reports from Tier 1 vendors</td><td>Annually</td><td>Ravi Jain</td></tr>
+        <tr><td>Re-send security questionnaire to Tier 1/2 vendors</td><td>Annually</td><td>Ravi Jain</td></tr>
+        <tr><td>Verify 72-hr notification clause remains in force</td><td>Annually</td><td>Iris Liu</td></tr>
+        <tr><td>Update vendor inventory for additions/removals</td><td>On change + annually</td><td>Iris Liu + Ravi Jain</td></tr>
+        <tr><td>Full annual oversight review (AFFG-026)</td><td>Annually</td><td>Sai Revanth (operational)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">5. Receiving Vendor Breach Notifications</div></div>
+    <p>When AFFG receives a breach notification from any service provider, the following steps apply:</p>
+    <ol>
+      <li><strong>Log receipt</strong> — Record date and time of notification, vendor name, and notification method</li>
+      <li><strong>Notify Ravi Jain within 24 hours</strong> — Forward the notification immediately</li>
+      <li><strong>Request additional information</strong> — If the vendor notification does not include all required details (nature of incident, customer records affected, timeframe), request in writing within 24 hours</li>
+      <li><strong>Reg S-P assessment</strong> — Ravi Jain makes a Notification Determination within 24 hours of receiving complete information (see AFFG-002 Section 3)</li>
+      <li><strong>Document</strong> — File all vendor notifications and AFFG's response in the Reg S-P compliance records</li>
+    </ol>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">6. Vendor Records — 5-Year Retention (Reg S-P)</div></div>
+    <div class="info-box">
+      The following must be retained for <strong>5 years</strong> per Reg S-P: this framework and all updates; the vendor inventory (annual snapshots); security questionnaire responses from each vendor; SOC 2 reports obtained from vendors; contracts and signed amendments containing the breach notification clause; all vendor breach notifications received and AFFG's response; results of the annual oversight review (AFFG-026).<br><br>
+      <em>Storage location: AFFG designated compliance records repository — designate with custodian per AFFG-004.</em>
+    </div>
+
+    <div class="section-bar"><div class="accent"></div><div class="title">7. Approval</div></div>
+    <table class="sig-table">
+      <thead><tr><th>Role</th><th>Name</th><th>Signature</th><th>Date</th></tr></thead>
+      <tbody>
+        <tr><td>IT Provider / Author</td><td>Ravi Jain, CEO — Technijian</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+        <tr><td>AFFG Primary Contact</td><td>Iris Liu</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+        <tr><td>AFFG Registered Principal</td><td>&nbsp;</td><td><span class="sig-line"></span></td><td><span class="sig-line"></span></td></tr>
+      </tbody>
+    </table>
+
+  </main>
+  <div class="foot-rule"></div>
+  <footer class="foot">
+    <span><span class="brand">Technijian</span> · AFFG Service Provider Oversight Framework (AFFG-003 v1.0) · June 5, 2026</span>
+    <span class="conf">CONFIDENTIAL</span>
+  </footer>
+</div>
+
+</body>
+</html>

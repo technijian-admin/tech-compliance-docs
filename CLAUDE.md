@@ -17,6 +17,7 @@ policies, evidence collection, attestation + audit-response templates) for clien
 | **Cortex vault** (`rjain557-knowledge`) | `C:\Users\rjain\OneDrive - Technijian, Inc\Documents\obsidian\rjain557-knowledge\rjain557-knowledge\` | Cross-repo "brain." Durable knowledge in `claude-memory/topics/*.md`, working notes in `claude-memory/auto-memory/`, index at `claude-memory/index.md`. Shared across all of Ravi's Claude Code repos. |
 
 Notes:
+
 - All three live under **OneDrive**, so they sync across workstations automatically —
   **no separate vault git-commit step is needed** for new content.
 - The username segment is `rjain` on this workstation; some cortex notes record it as
@@ -44,6 +45,48 @@ To read **Ravi's own email** (e.g. an inbound message a session needs to review)
 tenant / client ID from `keys\m365-graph.md` at runtime — never paste them inline.
 `Connect-MgGraph -TenantId <…> -ClientSecretCredential $cred -NoWelcome`, then
 `Get-MgUserMessage -UserId 'RJain@technijian.com'`.
+
+---
+
+## AFFG Client — Key Facts (do not re-derive)
+
+| What | Value |
+|---|---|
+| Client full name | American Fundstars Financial Group LLC |
+| Portal DirID | 8141 |
+| Primary contact | Iris Liu — `iris.liu@americanfundstars.com` |
+| Address | 1 Park Plaza, Irvine, CA 92618 |
+| Alternate site | 84 Spacial, Irvine, CA 92618 |
+| Regulators | SEC (Reg S-P 2024) + FINRA (Rule 4370, 3110) |
+
+**Security tools Technijian manages for AFFG** (confirmed from portal ticket history 2026-06-04):
+
+- **Huntress** — EDR/MDR (device: LEON)
+- **Sophos Firewall** — AFFG-HQ-FW-02, weekly backups + firmware managed by Technijian
+- **Nakivo / Veeam 365** — M365 backup job `Bkp_AFFG365`
+- **Cisco Umbrella** — DNS security
+- **Microsoft 365** — productivity + admin monitoring
+- **Synology NAS** — on-site local backup
+
+Client profile: `clients/affg/docs/affg-client-profile.md`
+
+---
+
+## Client Portal API (do not re-derive)
+
+| What | Value |
+|---|---|
+| UI | `https://clientportal.technijian.com` (Entra SSO) |
+| API base | `https://api-clientportal.technijian.com` |
+| Auth endpoint | POST /api/auth/token — body: `{"userName":"...","password":"..."}` |
+| Credentials | `keys\client-portal.md` (verified 2026-06-04) |
+| Ticket assign endpoint | POST /Calendar/Cal_Tkt_InternalAssign_Tkt_Save (portal UI domain) |
+| jsData fields | TicketID (string), AssignedUserID (string), Status (int), TicketEntryID (0), InternalNotes, StartTime (YYYY-MM-DDTHH:mm:ss), TimeZoneOffset |
+| Status ID — New | 1259 |
+| Sai Revanth DirID | 8107 (pod: IRV:TS1) |
+| Sai Revanth email | `sravanth@technijian.com` |
+| AFFG DirID | 8141 |
+| SP pattern | POST /api/modules/dbo/stored-procedures/client-portal/dbo/{SP_NAME}/execute |
 
 ---
 
